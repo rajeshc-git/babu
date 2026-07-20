@@ -258,22 +258,33 @@
         #themeToggle { right: 1.5rem; }
 
         #navMenu {
-            background: rgba(2, 6, 23, 0.98) !important;
-            backdrop-filter: blur(30px) !important;
-            border-right: 1px solid var(--glass-border) !important;
-            width: 340px !important;
-            max-width: 90vw !important;
+            background: rgba(2, 6, 23, 0.95) !important;
+            backdrop-filter: blur(24px) saturate(180%) !important;
+            -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+            border-right: 1px solid rgba(255, 255, 255, 0.1) !important;
+            width: 320px !important;
+            max-width: 86vw !important;
             height: 100vh !important;
+            height: 100dvh !important;
             position: fixed !important;
             top: 0 !important;
             left: 0 !important;
             z-index: 2000 !important;
             transform: translateX(-100%);
-            transition: transform 0.5s var(--ease-out) !important;
-            padding: 2rem !important;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+            padding: 1.75rem 1.25rem !important;
             display: flex !important;
             flex-direction: column !important;
             overflow-y: auto !important;
+            box-shadow: 20px 0 50px rgba(0, 0, 0, 0.5) !important;
+        }
+
+        #navMenu::-webkit-scrollbar {
+            width: 5px;
+        }
+        #navMenu::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 10px;
         }
 
         #navMenu:not(.-translate-x-full) {
@@ -283,32 +294,42 @@
         .menu-link {
             display: flex;
             align-items: center;
-            gap: 1rem;
-            padding: 1rem 1.25rem;
-            border-radius: 1rem;
-            color: var(--text-secondary);
-            transition: all 0.4s var(--ease-out);
-            margin-bottom: 0.5rem;
+            gap: 0.85rem;
+            padding: 0.75rem 0.9rem;
+            border-radius: 0.85rem;
+            color: rgba(248, 250, 252, 0.8);
+            font-size: 0.92rem;
+            font-weight: 500;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            margin-bottom: 0.4rem;
             border: 1px solid transparent;
         }
 
         .menu-link:hover, .menu-link.active {
-            background: var(--glass-strong);
-            border-color: var(--glass-border-bright);
-            color: var(--text-primary);
-            transform: translateX(8px);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.15);
+            color: #ffffff;
+            transform: translateX(4px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
 
         .menu-link i {
-            width: 2.75rem;
-            height: 2.75rem;
+            width: 2.35rem;
+            height: 2.35rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 0.75rem;
+            border-radius: 0.65rem;
             background: linear-gradient(135deg, var(--accent), var(--accent2));
             color: white;
-            font-size: 1.1rem;
+            font-size: 0.95rem;
+            flex-shrink: 0;
+            box-shadow: 0 4px 12px var(--accent-glow);
+            transition: transform 0.3s ease;
+        }
+
+        .menu-link:hover i, .menu-link.active i {
+            transform: scale(1.08);
         }
 
         #menuOverlay {
@@ -1584,8 +1605,9 @@
         body[data-theme="light-lotus"] #navMenu,
         body[data-theme="bengali-kashful"] #navMenu,
         body[data-theme="rose-quartz"] #navMenu {
-            background: #ffffff !important;
-            box-shadow: 10px 0 30px rgba(15, 23, 42, 0.15) !important;
+            background: rgba(255, 255, 255, 0.96) !important;
+            border-right: 1px solid rgba(15, 23, 42, 0.08) !important;
+            box-shadow: 10px 0 30px rgba(15, 23, 42, 0.12) !important;
         }
 
         body.light #navMenu h3,
@@ -1606,7 +1628,40 @@
         body[data-theme="light-lotus"] #closeMenuBtn,
         body[data-theme="bengali-kashful"] #closeMenuBtn,
         body[data-theme="rose-quartz"] #closeMenuBtn {
+            background: rgba(15, 23, 42, 0.05) !important;
+            border: 1px solid rgba(15, 23, 42, 0.1) !important;
             color: #0f172a !important;
+        }
+
+        body.light .menu-link,
+        body[data-theme="light-lotus"] .menu-link,
+        body[data-theme="bengali-kashful"] .menu-link,
+        body[data-theme="rose-quartz"] .menu-link {
+            color: #334155 !important;
+        }
+
+        body.light .menu-link:hover, body.light .menu-link.active,
+        body[data-theme="light-lotus"] .menu-link:hover, body[data-theme="light-lotus"] .menu-link.active,
+        body[data-theme="bengali-kashful"] .menu-link:hover, body[data-theme="bengali-kashful"] .menu-link.active,
+        body[data-theme="rose-quartz"] .menu-link:hover, body[data-theme="rose-quartz"] .menu-link.active {
+            background: rgba(241, 245, 249, 0.9) !important;
+            border-color: rgba(203, 213, 225, 0.8) !important;
+            color: #0f172a !important;
+        }
+
+        body.light .nav-quote-box,
+        body[data-theme="light-lotus"] .nav-quote-box,
+        body[data-theme="bengali-kashful"] .nav-quote-box,
+        body[data-theme="rose-quartz"] .nav-quote-box {
+            background: rgba(241, 245, 249, 0.7) !important;
+            border-color: rgba(203, 213, 225, 0.6) !important;
+        }
+
+        body.light .nav-quote-box p,
+        body[data-theme="light-lotus"] .nav-quote-box p,
+        body[data-theme="bengali-kashful"] .nav-quote-box p,
+        body[data-theme="rose-quartz"] .nav-quote-box p {
+            color: #475569 !important;
         }
 
         body.light .tribute-form-card,
@@ -1677,17 +1732,68 @@
         body.light .modal-close,
         body[data-theme="light-lotus"] .modal-close,
         body[data-theme="bengali-kashful"] .modal-close,
-        body[data-theme="rose-quartz"] .modal-close {
+        body[data-theme="rose-quartz"] .modal-close,
+        body[data-theme="sandalwood-pearl"] .modal-close {
             background: #ffffff !important;
             color: #0f172a !important;
             border-color: #cbd5e1 !important;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1) !important;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important;
+        }
+
+        body.light .modal-nav,
+        body[data-theme="light-lotus"] .modal-nav,
+        body[data-theme="bengali-kashful"] .modal-nav,
+        body[data-theme="rose-quartz"] .modal-nav,
+        body[data-theme="sandalwood-pearl"] .modal-nav {
+            background: #ffffff !important;
+            color: #0f172a !important;
+            border: 1.5px solid #cbd5e1 !important;
+            box-shadow: 0 8px 24px rgba(15, 23, 42, 0.22) !important;
+        }
+
+        body.light .modal-nav i,
+        body[data-theme="light-lotus"] .modal-nav i,
+        body[data-theme="bengali-kashful"] .modal-nav i,
+        body[data-theme="rose-quartz"] .modal-nav i,
+        body[data-theme="sandalwood-pearl"] .modal-nav i {
+            color: #0f172a !important;
+        }
+
+        body.light .modal-nav:hover,
+        body[data-theme="light-lotus"] .modal-nav:hover,
+        body[data-theme="bengali-kashful"] .modal-nav:hover,
+        body[data-theme="rose-quartz"] .modal-nav:hover,
+        body[data-theme="sandalwood-pearl"] .modal-nav:hover {
+            background: var(--accent, #f59e0b) !important;
+            border-color: var(--accent, #f59e0b) !important;
+            color: #ffffff !important;
+            box-shadow: 0 8px 25px rgba(245, 158, 11, 0.4) !important;
+        }
+
+        body.light .modal-nav:hover i,
+        body[data-theme="light-lotus"] .modal-nav:hover i,
+        body[data-theme="bengali-kashful"] .modal-nav:hover i,
+        body[data-theme="rose-quartz"] .modal-nav:hover i,
+        body[data-theme="sandalwood-pearl"] .modal-nav:hover i {
+            color: #ffffff !important;
+        }
+
+        body.light .modal-hint,
+        body[data-theme="light-lotus"] .modal-hint,
+        body[data-theme="bengali-kashful"] .modal-hint,
+        body[data-theme="rose-quartz"] .modal-hint,
+        body[data-theme="sandalwood-pearl"] .modal-hint {
+            background: #ffffff !important;
+            color: #334155 !important;
+            border: 1px solid #cbd5e1 !important;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1) !important;
         }
 
         body.light .btn-glass,
         body[data-theme="light-lotus"] .btn-glass,
         body[data-theme="bengali-kashful"] .btn-glass,
-        body[data-theme="rose-quartz"] .btn-glass {
+        body[data-theme="rose-quartz"] .btn-glass,
+        body[data-theme="sandalwood-pearl"] .btn-glass {
             background: #ffffff !important;
             color: #0f172a !important;
             border-color: #cbd5e1 !important;
@@ -1724,34 +1830,58 @@
 
         /* ════════════ COMPACT MOBILE DESIGN & THEME STUDIO ════════════ */
         @media (max-width: 640px) {
+            .modal {
+                padding: 0.75rem !important;
+            }
+            .modal-close {
+                width: 2.15rem !important;
+                height: 2.15rem !important;
+                font-size: 0.85rem !important;
+                top: 0.75rem !important;
+                right: 0.75rem !important;
+            }
             #navMenu {
-                width: 270px !important;
-                max-width: 82vw !important;
+                width: 300px !important;
+                max-width: 85vw !important;
                 padding: 1.25rem 1rem !important;
+                padding-top: max(1.25rem, env(safe-area-inset-top)) !important;
+                padding-bottom: max(1.25rem, env(safe-area-inset-bottom)) !important;
             }
             #navMenu h3 {
-                font-size: 1rem !important;
+                font-size: 1.1rem !important;
             }
             #navMenu p {
-                font-size: 0.65rem !important;
+                font-size: 0.72rem !important;
             }
             #closeMenuBtn {
-                width: 2.25rem !important;
-                height: 2.25rem !important;
+                width: 2.35rem !important;
+                height: 2.35rem !important;
+                border-radius: 50% !important;
+                background: rgba(255, 255, 255, 0.08) !important;
+                border: 1px solid rgba(255, 255, 255, 0.12) !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
             }
             #closeMenuBtn i {
-                font-size: 0.9rem !important;
+                font-size: 0.88rem !important;
             }
             .menu-link {
-                padding: 0.55rem 0.75rem !important;
-                font-size: 0.82rem !important;
-                gap: 0.65rem !important;
+                padding: 0.65rem 0.85rem !important;
+                font-size: 0.88rem !important;
+                gap: 0.75rem !important;
                 border-radius: 0.75rem !important;
+                margin-bottom: 0.35rem !important;
             }
             .menu-link i {
-                font-size: 0.85rem !important;
-                width: 1.1rem !important;
-                text-align: center !important;
+                width: 2.15rem !important;
+                height: 2.15rem !important;
+                font-size: 0.88rem !important;
+                border-radius: 0.6rem !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                flex-shrink: 0 !important;
             }
 
             #ambientBtn {
@@ -2427,13 +2557,18 @@
 
     <!-- Navigation Menu -->
     <div id="navMenu" class="transform -translate-x-full">
-        <div class="flex items-center justify-between mb-8">
-            <div>
-                <h3 class="text-xl font-bold text-white font-cinzel">Navigation</h3>
-                <p class="text-xs text-gray-400 mt-1">Explore memories</p>
+        <div class="flex items-center justify-between pb-5 mb-5 border-b border-white/10">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-amber-500/20 to-orange-500/20 border border-amber-500/30 flex items-center justify-center text-amber-400">
+                    <i class="fas fa-compass text-lg"></i>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold text-white font-cinzel tracking-wide">Navigation</h3>
+                    <p class="text-xs text-gray-400">Explore memories</p>
+                </div>
             </div>
-            <button id="closeMenuBtn" class="w-10 h-10 rounded-full flex items-center justify-center hover:bg-white/10 text-gray-400 hover:text-white transition-colors" type="button" aria-label="Close menu">
-                <i class="fas fa-times text-lg"></i>
+            <button id="closeMenuBtn" class="w-9 h-9 rounded-full flex items-center justify-center transition-all duration-300" type="button" aria-label="Close menu">
+                <i class="fas fa-times text-base"></i>
             </button>
         </div>
 
@@ -2471,8 +2606,11 @@
                 <span>Voices & Sounds</span>
             </a>
 
-            <div class="pt-6 mt-6 border-t border-white/10">
-                <h4 class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3 px-4">Life's Journey</h4>
+            <div class="pt-5 mt-5 border-t border-white/10">
+                <h4 class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3 px-3 flex items-center gap-2">
+                    <span>Life's Journey</span>
+                    <span class="h-px flex-1 bg-white/10"></span>
+                </h4>
                 <a href="#life-journey" class="menu-link" data-section="life-journey">
                     <i class="fas fa-folder-open"></i>
                     <span>All Memories</span>
@@ -2484,9 +2622,10 @@
             </div>
         </nav>
 
-        <div class="mt-auto pt-6 border-t border-white/10">
-            <div class="glass p-4 rounded-xl">
-                <p class="text-sm text-gray-400 text-center font-cormorant italic">
+        <div class="mt-auto pt-5 border-t border-white/10">
+            <div class="nav-quote-box glass p-3.5 rounded-xl border border-white/10 text-center">
+                <i class="fas fa-quote-left text-amber-400/40 text-xs mb-1 block"></i>
+                <p class="text-xs text-gray-300 font-cormorant italic leading-relaxed">
                     "Those we love don't go away, they walk beside us every day"
                 </p>
             </div>
@@ -2966,11 +3105,11 @@
 
     <!-- 15 Themes Studio Modal (Ultra Compact Mobile) -->
     <div id="themeModal" class="modal">
-        <div class="modal-close" onclick="document.getElementById('themeModal').classList.remove('active'); document.body.style.overflow=''">
-            <i class="fas fa-times"></i>
-        </div>
-        <div class="max-w-2xl w-[95%] sm:w-[90%] glass p-4 sm:p-6 md:p-8 rounded-3xl border border-amber-500/40 shadow-2xl text-left max-h-[85vh] overflow-y-auto flex flex-col">
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4 pb-3 border-b border-white/10">
+        <div class="max-w-2xl w-[95%] sm:w-[90%] glass p-4 sm:p-6 md:p-8 rounded-3xl border border-amber-500/40 shadow-2xl text-left max-h-[85vh] overflow-y-auto flex flex-col relative">
+            <button type="button" class="modal-close absolute top-3 right-3 sm:top-4 sm:right-4 w-8 h-8 sm:w-10 sm:h-10 text-xs sm:text-base flex items-center justify-center rounded-full transition-all z-10 cursor-pointer" onclick="document.getElementById('themeModal').classList.remove('active'); document.body.style.overflow=''" aria-label="Close theme studio">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4 pb-3 border-b border-white/10 pr-8 sm:pr-10">
                 <div class="flex items-center gap-3">
                     <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-amber-500 to-purple-600 text-white flex items-center justify-center text-lg flex-shrink-0 shadow-lg shadow-amber-500/30">
                         <i class="fas fa-palette"></i>
@@ -3320,6 +3459,8 @@
                 document.querySelectorAll('.menu-link').forEach(item => {
                     item.addEventListener('click', (e) => {
                         e.preventDefault();
+                        document.querySelectorAll('.menu-link').forEach(l => l.classList.remove('active'));
+                        item.classList.add('active');
                         const targetId = item.getAttribute('href').substring(1);
                         closeMenu();
 
@@ -3328,7 +3469,7 @@
                             if (targetElement) {
                                 targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
                             }
-                        }, 300);
+                        }, 250);
                     });
                 });
 
