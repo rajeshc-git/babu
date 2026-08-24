@@ -1,0 +1,18 @@
+{
+  "name": "Shyamal Choudhury Memorial Shrine",
+  "short_name": "Shyamal Memorial",
+  "description": "In Loving Memory of Shyamal Choudhury (1972 — 2026). A sacred memorial gallery celebrating his life, memories, voice recordings, and tributes.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#020617",
+  "theme_color": "#020617",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "Assets/favicon.PNG",
+      "sizes": "192x192 512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

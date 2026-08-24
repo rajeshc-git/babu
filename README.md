@@ -1,4 +1,4 @@
-# 🕊️ In Loving Memory of Shyamal Choudhury (1973 — 2026)
+# 🕊️ In Loving Memory of Shyamal Choudhury (1972 — 2026)
 
 > *"A life that touched so many hearts can never be forgotten. His physical journey concluded on March 6, 2026, but his love, gentle wisdom, and quiet strength shine eternally."*
 
@@ -6,7 +6,7 @@
 
 ## 🙏 About This Sacred Digital Shrine
 
-This memorial web application was crafted with deep love, honor, and reverence to celebrate the life, values, and everlasting legacy of **Shyamal Choudhury (1973 — 2026)**. It serves as an interactive global sanctuary where family, friends, and well-wishers can pay their respects, read his story, share memories, and light eternal diyas in his memory.
+This memorial web application was crafted with deep love, honor, and reverence to celebrate the life, values, and everlasting legacy of **Shyamal Choudhury (1972 — 2026)**. It serves as an interactive global sanctuary where family, friends, and well-wishers can pay their respects, read his story, share memories, and light eternal diyas in his memory.
 
 ---
 

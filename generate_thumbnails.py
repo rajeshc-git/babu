@@ -1,20 +1,21 @@
+#!/usr/bin/env python3
 """
-Generate low-resolution thumbnails for all images in the memorial gallery.
+Generate optimized thumbnails for all images in the memorial gallery.
 Creates a 'thumbs' subfolder next to each image with compressed, resized versions.
-Thumbnails are max 200px on the longest side, JPEG quality 60.
+Thumbnails are 380px on the longest side (crisp on Retina screens) with high-efficiency compression.
 """
 import os
 import json
-from PIL import Image
+from PIL import Image, ImageOps
 
-THUMB_MAX = 200  # max pixels on longest side
-THUMB_QUALITY = 60
+THUMB_MAX = 380  # 380px ensures crisp 2x Retina display quality while keeping files ~12-18KB
+THUMB_QUALITY = 78
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-IMAGE_EXTENSIONS = {'.jpg', '.jpeg', '.png', '.gif', '.webp', '.bmp'}
+IMAGE_EXTENSIONS = {'.jpg', '.jpeg', '.png', '.gif', '.webp', '.bmp', '.heic'}
 
 def get_all_image_paths():
-    """Collect all image paths from files.js data."""
+    """Collect all image paths from Assets."""
     paths = []
     
     # Main images
@@ -69,21 +70,20 @@ def generate_thumbnail(src_rel_path):
     
     try:
         with Image.open(src_abs) as img:
-            # Convert to RGB if necessary (for PNG with alpha, etc.)
+            # Auto-orient based on EXIF
+            img = ImageOps.exif_transpose(img)
+
+            # Convert to RGB
             if img.mode in ('RGBA', 'P', 'LA'):
                 img = img.convert('RGB')
             elif img.mode != 'RGB':
                 img = img.convert('RGB')
             
-            # Auto-orient based on EXIF
-            from PIL import ImageOps
-            img = ImageOps.exif_transpose(img)
-            
             # Resize maintaining aspect ratio
             img.thumbnail((THUMB_MAX, THUMB_MAX), Image.LANCZOS)
             
-            # Save as JPEG
-            img.save(thumb_abs, 'JPEG', quality=THUMB_QUALITY, optimize=True)
+            # Save progressive optimized JPEG
+            img.save(thumb_abs, 'JPEG', quality=THUMB_QUALITY, optimize=True, progressive=True)
             
         return thumb_rel
     except Exception as e:
@@ -92,7 +92,7 @@ def generate_thumbnail(src_rel_path):
 
 
 def main():
-    print("=== Memorial Gallery Thumbnail Generator ===")
+    print("=== Memorial Gallery High-DPI Thumbnail Generator ===")
     paths = get_all_image_paths()
     print(f"Found {len(paths)} images to process.\n")
     
@@ -101,9 +101,7 @@ def main():
     failed = 0
     
     for i, p in enumerate(paths, 1):
-        # Normalize path separators
         p_normalized = p.replace('\\', '/')
-        print(f"[{i}/{len(paths)}] {p_normalized}")
         thumb_path = generate_thumbnail(p)
         if thumb_path:
             thumb_map[p_normalized] = thumb_path
