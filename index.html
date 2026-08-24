@@ -1685,24 +1685,6 @@
             border-color: #94a3b8 !important;
         }
 
-        body.light .rich-editor-box,
-        body[data-theme="light-lotus"] .rich-editor-box,
-        body[data-theme="bengali-kashful"] .rich-editor-box,
-        body[data-theme="rose-quartz"] .rich-editor-box,
-        body[data-theme="sandalwood-pearl"] .rich-editor-box {
-            background: #ffffff !important;
-            color: #0f172a !important;
-            border-color: #cbd5e1 !important;
-        }
-
-        body.light .rich-editor-box[data-placeholder]:empty:before,
-        body[data-theme="light-lotus"] .rich-editor-box[data-placeholder]:empty:before,
-        body[data-theme="bengali-kashful"] .rich-editor-box[data-placeholder]:empty:before,
-        body[data-theme="rose-quartz"] .rich-editor-box[data-placeholder]:empty:before,
-        body[data-theme="sandalwood-pearl"] .rich-editor-box[data-placeholder]:empty:before {
-            color: #94a3b8 !important;
-        }
-
         body.light #editorWordCount,
         body[data-theme="light-lotus"] #editorWordCount,
         body[data-theme="bengali-kashful"] #editorWordCount,
@@ -2896,80 +2878,30 @@
             color: #ffffff;
             transform: translateY(-1px);
         }
-        .rich-toolbar {
-            background: rgba(0, 0, 0, 0.3);
-            border: 1px solid var(--glass-border);
-        }
-        body.light .rich-toolbar {
-            background: rgba(0, 0, 0, 0.04);
-            border-color: #cbd5e1;
-        }
-        .tool-btn {
-            width: 32px;
-            height: 32px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 8px;
-            background: transparent;
-            border: 1px solid transparent;
-            color: var(--text-secondary);
-            font-size: 0.86rem;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-        .tool-btn:hover, .tool-btn.active {
-            background: var(--glass-strong);
-            border-color: var(--glass-border-bright);
-            color: #ffffff;
-        }
-        body.light .tool-btn:hover {
-            background: rgba(0, 0, 0, 0.08);
-            color: #0f172a;
-        }
         .phrase-insert-btn {
-            font-size: 0.72rem;
-            padding: 0.25rem 0.6rem;
-            border-radius: 8px;
-            background: rgba(251, 191, 36, 0.12);
+            font-size: 0.76rem;
+            padding: 0.35rem 0.75rem;
+            border-radius: 9999px;
+            background: rgba(251, 191, 36, 0.1);
             border: 1px solid rgba(251, 191, 36, 0.28);
             color: var(--gold);
             cursor: pointer;
             transition: all 0.2s ease;
             white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
         }
         .phrase-insert-btn:hover {
-            background: rgba(251, 191, 36, 0.25);
+            background: rgba(251, 191, 36, 0.22);
             color: #ffffff;
+            border-color: var(--gold);
             transform: translateY(-1px);
         }
-        .rich-editor-box {
-            min-height: 160px;
-            max-height: 420px;
-            overflow-y: auto;
-            border-top: none !important;
-            line-height: 1.7;
-            font-size: 0.95rem;
-            padding: 1rem 1.1rem;
-            outline: none;
-        }
-        .rich-editor-box:empty:before {
-            content: attr(data-placeholder);
-            color: var(--text-muted);
-            pointer-events: none;
-            display: block;
-        }
-        .rich-editor-box blockquote {
-            border-left: 3px solid var(--saffron);
-            padding-left: 0.85rem;
-            margin: 0.5rem 0;
-            color: var(--gold);
-            font-style: italic;
-        }
-        .rich-editor-box ul {
-            list-style-type: disc;
-            padding-left: 1.4rem;
-            margin: 0.5rem 0;
+        body.light .phrase-insert-btn {
+            background: rgba(217, 119, 6, 0.08);
+            border-color: rgba(217, 119, 6, 0.3);
+            color: #b45309;
         }
         .contact-submit-btn {
             display: inline-flex;
@@ -3630,9 +3562,8 @@
                 <form id="directContactForm" method="POST" action="https://formsubmit.co/contact@shyamalchoudhuri.in">
                     <!-- Netlify / Formsubmit metadata -->
                     <input type="hidden" name="_captcha" value="false">
-                    <input type="hidden" name="_template" value="table">
+                    <input type="hidden" name="_template" value="box">
                     <input type="hidden" name="_subject" id="hiddenEmailSubject" value="New Memorial Message from shyamalchoudhuri.in">
-                    <input type="hidden" name="formatted_message" id="hiddenRichMessage" value="">
 
                     <div class="form-row">
                         <div class="field">
@@ -3660,44 +3591,21 @@
 
                     <div class="field mb-4">
                         <div class="flex items-center justify-between mb-1.5">
-                            <label class="field-label mb-0" for="contactEditor"><i class="fas fa-feather-pointed text-amber-400/80"></i> Your Letter / Message <span class="text-amber-400">*</span></label>
-                            <span class="text-[11px] text-gray-400 font-sans" id="editorWordCount">0 words</span>
+                            <label class="field-label mb-0" for="cMessage"><i class="fas fa-feather-pointed text-amber-400/80"></i> Your Letter / Message <span class="text-amber-400">*</span></label>
+                            <span class="text-[11px] text-gray-400 font-sans" id="editorWordCount">0 words (0 chars)</span>
                         </div>
 
-                        <!-- Rich Text Toolbar -->
-                        <div class="rich-toolbar rounded-t-xl p-2 flex flex-wrap items-center gap-1.5 border-b border-white/10">
-                            <button type="button" class="tool-btn" data-command="bold" title="Bold (Ctrl+B)">
-                                <i class="fas fa-bold"></i>
-                            </button>
-                            <button type="button" class="tool-btn" data-command="italic" title="Italic (Ctrl+I)">
-                                <i class="fas fa-italic"></i>
-                            </button>
-                            <button type="button" class="tool-btn" data-command="underline" title="Underline (Ctrl+U)">
-                                <i class="fas fa-underline"></i>
-                            </button>
-                            <div class="h-4 w-px bg-white/20 mx-1"></div>
-                            <button type="button" class="tool-btn" data-command="blockquote" title="Quote block">
-                                <i class="fas fa-quote-left"></i>
-                            </button>
-                            <button type="button" class="tool-btn" data-command="insertUnorderedList" title="Bullet list">
-                                <i class="fas fa-list-ul"></i>
-                            </button>
-                            <div class="h-4 w-px bg-white/20 mx-1"></div>
-                            <button type="button" class="tool-btn text-rose-400" data-command="removeFormat" title="Clear formatting">
-                                <i class="fas fa-eraser"></i>
-                            </button>
-                            
-                            <!-- Sacred Phrase Inserts -->
-                            <div class="ml-auto flex items-center gap-1">
-                                <span class="text-[10px] text-gray-400 hidden sm:inline">Insert:</span>
-                                <button type="button" class="phrase-insert-btn" data-phrase="Rest in Eternal Peace 🙏">🙏 Peace</button>
-                                <button type="button" class="phrase-insert-btn" data-phrase="Forever in our memories 🌸">🌸 Forever Loved</button>
-                                <button type="button" class="phrase-insert-btn" data-phrase="Om Shanti 🕊️">🕊️ Om Shanti</button>
-                            </div>
-                        </div>
+                        <!-- Clean standard textarea -->
+                        <textarea class="form-field w-full" id="cMessage" name="message" rows="6" placeholder="Write your heartfelt letter or message to the family here..." maxlength="3000" style="resize:vertical; min-height:140px;" required></textarea>
 
-                        <!-- Contenteditable Rich Editor -->
-                        <div id="contactEditor" class="rich-editor-box form-field rounded-t-none" contenteditable="true" role="textbox" aria-multiline="true" data-placeholder="Write your heartfelt letter or message here... Use the toolbar above to format bold, italic, quotes or lists."></div>
+                        <!-- Quick Plain-text Phrase Inserts -->
+                        <div class="flex items-center flex-wrap gap-1.5 mt-2">
+                            <span class="text-[11px] text-gray-400 mr-1"><i class="fas fa-plus text-amber-400/70 text-[10px]"></i> Quick phrases:</span>
+                            <button type="button" class="phrase-insert-btn" data-phrase="Rest in Eternal Peace 🙏">🙏 Rest in Eternal Peace</button>
+                            <button type="button" class="phrase-insert-btn" data-phrase="Forever in our memories 🌸">🌸 Forever in our memories</button>
+                            <button type="button" class="phrase-insert-btn" data-phrase="Om Shanti 🕊️">🕊️ Om Shanti</button>
+                            <button type="button" class="phrase-insert-btn" data-phrase="Always loved, never forgotten 💫">💫 Always loved, never forgotten</button>
+                        </div>
                     </div>
 
                     <!-- Honeypot -->
@@ -3735,7 +3643,7 @@
         <input type="text" name="name">
         <input type="email" name="email">
         <input type="text" name="subject">
-        <textarea name="formatted_message"></textarea>
+        <textarea name="message"></textarea>
         <input name="_gotcha">
     </form>
 
@@ -5851,7 +5759,7 @@
         /* ════════════ DIRECT EMAIL / LETTER TO FAMILY (contact@shyamalchoudhuri.in) ════════════ */
         (function directContact() {
             const form = document.getElementById('directContactForm');
-            const editor = document.getElementById('contactEditor');
+            const messageEl = document.getElementById('cMessage');
             const submitBtn = document.getElementById('cSubmit');
             const statusBox = document.getElementById('contactStatusBox');
             const statusTitle = document.getElementById('contactStatusTitle');
@@ -5859,25 +5767,15 @@
             const statusIcon = document.getElementById('contactStatusIcon');
             const wordCountEl = document.getElementById('editorWordCount');
             const hiddenSubject = document.getElementById('hiddenEmailSubject');
-            const hiddenMessage = document.getElementById('hiddenRichMessage');
             const subjectInput = document.getElementById('cSubject');
 
-            if (!form || !editor) return;
+            if (!form || !messageEl) return;
 
-            // Rich text toolbar formatting commands
-            document.querySelectorAll('.tool-btn').forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    editor.focus();
-                    const cmd = btn.getAttribute('data-command');
-                    if (cmd === 'blockquote') {
-                        document.execCommand('formatBlock', false, 'blockquote');
-                    } else if (cmd) {
-                        document.execCommand(cmd, false, null);
-                    }
-                    updateWordCount();
-                });
-            });
+            // Helper to clean any non-breaking spaces or weird whitespace
+            function cleanText(str) {
+                if (!str) return '';
+                return str.replace(/\u00a0/g, ' ').trim();
+            }
 
             // Quick subject presets
             document.querySelectorAll('.preset-chip').forEach(chip => {
@@ -5892,55 +5790,66 @@
                 });
             });
 
-            // Sacred phrase insert chips
+            // Quick phrase insert buttons (inserts clean plain text without &nbsp; or HTML)
             document.querySelectorAll('.phrase-insert-btn').forEach(btn => {
                 btn.addEventListener('click', (e) => {
                     e.preventDefault();
-                    editor.focus();
                     const phrase = btn.getAttribute('data-phrase');
-                    if (phrase) {
-                        document.execCommand('insertHTML', false, `&nbsp;<strong>${phrase}</strong>&nbsp;`);
-                        updateWordCount();
+                    if (!phrase) return;
+
+                    const curVal = messageEl.value;
+                    const start = messageEl.selectionStart;
+                    const end = messageEl.selectionEnd;
+
+                    if (typeof start === 'number' && typeof end === 'number') {
+                        const before = curVal.substring(0, start);
+                        const after = curVal.substring(end);
+                        const needSpaceBefore = before.length > 0 && !/\s$/.test(before);
+                        const needSpaceAfter = after.length > 0 && !/^\s/.test(after);
+                        const insert = (needSpaceBefore ? ' ' : '') + phrase + (needSpaceAfter ? ' ' : ' ');
+                        messageEl.value = before + insert + after;
+                        const newPos = start + insert.length;
+                        messageEl.selectionStart = messageEl.selectionEnd = newPos;
+                    } else {
+                        messageEl.value = curVal ? curVal + '\n' + phrase : phrase;
                     }
+                    messageEl.focus();
+                    updateWordCount();
                 });
             });
 
-            // Word counter & live sync
+            // Word & character counter
             function updateWordCount() {
-                const text = editor.innerText.trim();
+                const text = messageEl.value.trim();
                 const words = text ? text.split(/\s+/).filter(Boolean).length : 0;
                 if (wordCountEl) {
                     wordCountEl.innerText = `${words} word${words === 1 ? '' : 's'} (${text.length} chars)`;
                 }
             }
-            editor.addEventListener('input', updateWordCount);
-            editor.addEventListener('keyup', updateWordCount);
+            messageEl.addEventListener('input', updateWordCount);
 
             // Form Submit via AJAX Fetch directly to contact@shyamalchoudhuri.in
             form.addEventListener('submit', async function (e) {
                 e.preventDefault();
 
-                const name = (document.getElementById('cName') || {}).value.trim();
-                const email = (document.getElementById('cEmail') || {}).value.trim();
-                const subject = subjectInput ? subjectInput.value.trim() : 'Memorial Note';
-                const messageHtml = editor.innerHTML.trim();
-                const messageText = editor.innerText.trim();
+                const name = cleanText((document.getElementById('cName') || {}).value);
+                const email = cleanText((document.getElementById('cEmail') || {}).value);
+                const subject = cleanText(subjectInput ? subjectInput.value : 'Memorial Note');
+                const message = cleanText(messageEl.value);
                 const honeypot = (form.querySelector('input[name="_gotcha"]') || {}).value || '';
 
-                if (!name || !email || !messageText) {
-                    alert('Please provide your name, email, and letter message.');
+                if (!name || !email || !message) {
+                    alert('Please provide your name, email, and message.');
                     return;
                 }
 
                 if (honeypot.trim() !== '') {
                     form.reset();
-                    editor.innerHTML = '';
                     return;
                 }
 
-                // Update hidden inputs for backup
-                if (hiddenSubject) hiddenSubject.value = `[Memorial Message] ${subject} (from ${name})`;
-                if (hiddenMessage) hiddenMessage.value = messageHtml;
+                const emailSubject = `[Memorial Letter] ${subject} - from ${name}`;
+                if (hiddenSubject) hiddenSubject.value = emailSubject;
 
                 // Set loading state
                 if (submitBtn) {
@@ -5950,14 +5859,15 @@
 
                 try {
                     // Send directly to contact@shyamalchoudhuri.in via FormSubmit AJAX JSON API
+                    // Clean fields only: name, email, subject, message (No formatted_letter HTML junk)
                     const payload = {
                         name: name,
                         email: email,
-                        _subject: `[Shyamal Memorial] ${subject} - From ${name}`,
+                        subject: subject,
+                        message: message,
+                        _subject: emailSubject,
                         _replyto: email,
-                        message: messageText,
-                        formatted_letter: messageHtml,
-                        _template: 'table',
+                        _template: 'box',
                         _captcha: 'false'
                     };
 
@@ -5976,17 +5886,17 @@
                             formSubmitMsg = data.message;
                         }
                     } catch (e) {
-                        console.warn('FormSubmit AJAX notice:', e);
+                        console.warn('FormSubmit notice:', e);
                     }
 
-                    // Also submit to Netlify background form
+                    // Also submit clean data to Netlify background form
                     try {
                         const netlifyData = new URLSearchParams();
                         netlifyData.append('form-name', 'contact-family');
                         netlifyData.append('name', name);
                         netlifyData.append('email', email);
                         netlifyData.append('subject', subject);
-                        netlifyData.append('formatted_message', messageHtml);
+                        netlifyData.append('message', message);
                         fetch('/', {
                             method: 'POST',
                             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -6014,7 +5924,6 @@
                     if (typeof playSacredChime === 'function') playSacredChime();
 
                     form.reset();
-                    editor.innerHTML = '';
                     updateWordCount();
                     document.querySelectorAll('.preset-chip').forEach(c => c.classList.remove('active'));
 
@@ -6024,8 +5933,8 @@
                         statusBox.classList.remove('hidden');
                         statusBox.classList.add('border-rose-500/40');
                         if (statusIcon) statusIcon.innerHTML = '<i class="fas fa-circle-exclamation text-rose-400"></i>';
-                        if (statusTitle) statusTitle.innerText = 'Note Sent';
-                        if (statusMsg) statusMsg.innerHTML = `Your letter has been recorded. You can also reach out anytime at <strong>contact@shyamalchoudhuri.in</strong>.`;
+                        if (statusTitle) statusTitle.innerText = 'Note Recorded';
+                        if (statusMsg) statusMsg.innerHTML = `Your message has been recorded. You can also reach out anytime at <strong>contact@shyamalchoudhuri.in</strong>.`;
                     }
                 } finally {
                     if (submitBtn) {
