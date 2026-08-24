@@ -5,6 +5,7 @@ Creates a 'thumbs' subfolder next to each image with compressed, resized version
 Thumbnails are 380px on the longest side (crisp on Retina screens) with high-efficiency compression.
 """
 import os
+import sys
 import json
 from PIL import Image, ImageOps
 
@@ -45,7 +46,7 @@ def get_all_image_paths():
     return paths
 
 
-def generate_thumbnail(src_rel_path):
+def generate_thumbnail(src_rel_path, force=False):
     """Generate a thumbnail for a single image. Returns the thumbnail relative path."""
     src_abs = os.path.join(BASE_DIR, src_rel_path)
     if not os.path.isfile(src_abs):
@@ -64,8 +65,8 @@ def generate_thumbnail(src_rel_path):
     thumb_abs = os.path.join(thumb_dir, thumb_filename)
     thumb_rel = os.path.join(dir_part, 'thumbs', thumb_filename).replace('\\', '/')
     
-    # Skip if thumbnail already exists and is newer than source
-    if os.path.isfile(thumb_abs) and os.path.getmtime(thumb_abs) >= os.path.getmtime(src_abs):
+    # Skip if thumbnail already exists and is newer than source (unless force=True)
+    if not force and os.path.isfile(thumb_abs) and os.path.getmtime(thumb_abs) >= os.path.getmtime(src_abs):
         return thumb_rel
     
     try:
@@ -92,7 +93,8 @@ def generate_thumbnail(src_rel_path):
 
 
 def main():
-    print("=== Memorial Gallery High-DPI Thumbnail Generator ===")
+    force = '--force' in sys.argv or '-f' in sys.argv
+    print(f"=== Memorial Gallery High-DPI Thumbnail Generator (Force={force}) ===")
     paths = get_all_image_paths()
     print(f"Found {len(paths)} images to process.\n")
     
@@ -102,7 +104,7 @@ def main():
     
     for i, p in enumerate(paths, 1):
         p_normalized = p.replace('\\', '/')
-        thumb_path = generate_thumbnail(p)
+        thumb_path = generate_thumbnail(p, force=force)
         if thumb_path:
             thumb_map[p_normalized] = thumb_path
             success += 1
