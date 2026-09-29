@@ -1,66 +1,84 @@
-# 🕊️ In Loving Memory of Shyamal Choudhury (1972 — 2026)
+# 🛡️ Babu Memorial Sanctuary — Clash of Clans 3D Living Archive
 
 > *"A life that touched so many hearts can never be forgotten. His physical journey concluded on March 6, 2026, but his love, gentle wisdom, and quiet strength shine eternally."*
 
----
-
-## 🙏 About This Sacred Digital Shrine
-
-This memorial web application was crafted with deep love, honor, and reverence to celebrate the life, values, and everlasting legacy of **Shyamal Choudhury (1972 — 2026)**. It serves as an interactive global sanctuary where family, friends, and well-wishers can pay their respects, read his story, share memories, and light eternal diyas in his memory.
+An interactive **Clash of Clans GUI-inspired** 3D memorial sanctuary and living archive honoring **Shyamal Choudhury (Babu 1972 — 2026)**. Built with an optimized **Next.js frontend** and an ultra-lean, low-resource **Native Go (Golang) microservice backend**.
 
 ---
 
-## 🌟 Key Features
+## ⚡ 1GB VPS & Low-Resource Architecture
 
-### 🪔 1. Tranquil Lotus Pond (Physics-Driven Water Canvas)
-- **Physics Canvas Engine**: Features a serene water canvas with floating sacred diyas that drift naturally with physics-based water currents.
-- **Supabase Cloud Synchronization**: Visitors from anywhere in the world can light a diya, enter their name, and see their floating flame persist in the cloud database in real time.
-- **Mobile Responsive**: Dynamically scales floating diya geometry (`0.65x`) and boundaries (`280px` height) for smartphone viewports.
+This application was engineered specifically to run flawlessly on low-spec cloud VPS instances (e.g. **1 GB RAM & 1 GB Storage**):
 
-### 🌌 2. Stars of Memory Sky (Interactive Constellation)
-- **Shining Starlight Grid**: Every tribute written by family and friends shines as a star in a glowing night sky canvas.
-- **High-Contrast Tooltips**: Click or hover any star to read heartfelt memories with high contrast across all themes.
+| Service | Unique Port | Active RAM Usage | CPU Idle | Storage Strategy |
+| :--- | :--- | :--- | :--- | :--- |
+| **babu-frontend** | `1430` | **~32 MB** | `0.00%` | Next.js Standalone Runner |
+| **babu-backend** | `8530` | **~10 MB** | `0.00%` | Single compiled native Go binary |
+| **Media Assets** | N/A | **0 MB Disk** | `0.00%` | **Direct GitHub Public CDN Stream** |
+| **Total Stack** | `1430` & `8530` | **~43 MB Total** | `0.00%` | **>95% of 1GB VPS RAM remains free!** |
 
-### 📜 3. Memorial Quote Card Exporter
-- **Automated PNG Exporter**: Generates custom 800x500 high-resolution memorial cards containing personalized messages.
-- **Multiline Auto-Scaling Text Engine**: Automatically wraps multiline text and scales font sizing (`20px` down to `11px`) so long heartfelt tributes fit on exported cards.
-
-### 🎨 4. 15 Curated World-Class Themes (11 Dark, 4 Light)
-- Includes curated color palettes (*Dark Gold, Light Lotus, Emerald Sanctuary, Royal Amethyst, Sunrise Temple, Bengali Kashful, Rose Quartz, Golden Sunset*) with real-time theme switching.
-
-### 🎥 5. Native Media Galleries & High-Performance Architecture
-- **Native Video Frame Thumbnails (`#t=0.5`)**: Native HTML5 frame seeking with live hover playback preview.
-- **Event-Driven Media Load Tracking**: Features the **Sacred Diya Flame Pulse Loader** that tracks actual network downloads before revealing media cards.
-- **0% Idle CPU**: Viewport `IntersectionObserver` automatically pauses canvas animation loops when out of view to preserve CPU & battery.
+### ☁️ Zero-Disk GitHub Public Assets Engine
+Instead of filling your server's storage with gigabytes of photos, audio recordings, and videos:
+- The Go backend communicates directly with GitHub's Public REST API (`https://api.github.com/repos/rajeshc-git/babu/contents/Assets/...`).
+- Audio files (including 100+ voice recordings of Babu) and photos stream directly via GitHub's high-speed global CDN (`raw.githubusercontent.com`).
+- Eliminates media storage overhead completely from your VPS.
 
 ---
 
-## 📁 Repository Structure
+## 🐳 1-Command Docker Deployment
 
+Deploy the entire stack with zero configuration:
+
+```bash
+docker compose up -d --build
 ```
-.
-├── Assets/                 # Photos, Videos, Audio, Belongings & Last Ride media
-├── index.html              # Main Memorial Shrine Web Application
-├── files.js                # Media file list registry
-├── thumbs_map.js           # Media thumbnail mapping dictionary
-├── generate_thumbnails.py  # Python media processing script
-├── generate.py             # File scanner utility script
-├── robots.txt              # Search engine index rules
-└── sitemap.xml             # SEO Sitemap
+
+- **Frontend App**: [http://localhost:1430](http://localhost:1430)
+- **Go API & Telemetry**: [http://localhost:8530/api/health](http://localhost:8530/api/health)
+
+To view real-time resource consumption on your server:
+```bash
+docker stats babu-frontend babu-backend
+```
+
+To stop containers:
+```bash
+docker compose down
 ```
 
 ---
 
-## 🛠️ Technology Stack
+## 🚀 Running Directly on Host (Without Docker)
 
-- **Frontend**: HTML5, Vanilla JavaScript (ES6+), Vanilla CSS3 / Glassmorphism Design System
-- **Typography**: Google Fonts (*Cinzel, Cormorant Garamond, Inter, Outfit*)
-- **Icons**: FontAwesome 6 Pro
-- **Cloud Backend**: Supabase Realtime Database (PostgreSQL)
-- **Large File Storage**: Git LFS
+You can also run both services directly with custom unique ports:
+
+```bash
+./start.sh
+```
+
+- Frontend runs on: `http://localhost:1430`
+- Go Backend runs on: `http://localhost:8530`
 
 ---
 
-## 🌸 Dedication
+## 🎮 Clash of Clans GUI & Feature Highlights
 
-*Dedicated to my beloved father, Shyamal Choudhury. Your guidance remains our light, your love our foundation.*
+1. **Iconic 3D Bevel Buttons** (Exact replica of reference GUI):
+   - **Orange Attack/Action Button**: 3D extruded cartoon button with gradient and drop shadow.
+   - **Green Collect/Upgrade Button**: 3D lime-to-forest gradient button with bevel edge.
+   - **Speech Bubble Button**: Opens Clan Tributes & Condolences Drawer.
+   - **Info Gear Button**: Opens Sanctuary Codex & Town Hall 16 statistics.
+2. **Resource HUD**:
+   - **Purple Elixir Bar**: Rounded dark container, glass highlight, and 3D purple elixir droplet bulb.
+   - **Green Life / Dark Elixir Bar**: Rounded progress bar with 3D green life droplet bulb.
+   - **Stars of Honor Bar**: Golden coin & star tribute counter.
+   - **Town Hall 16 Badge**: Level 16 star emblem with active sanctuary shield status.
+3. **Interactive 3D Bookshelf & Drawer (Three.js)**:
+   - Mahogany library shelves holding hardbound volumes across different eras of Babu's life.
+   - Hovering or touching pulls a volume forward from the shelf with golden aura.
+   - Clicking a book flies it into center screen and opens the antique tome.
+   - Left Page: Archival portrait + real audio player for Babu's recorded voice with waveforms.
+   - Right Page: Life wisdom narrative, memorable quotes, and live tribute actions (`+50 Elixir`, `Flame`, `Star`).
+   - Adaptive 2.5D CSS Drawer Grid fallback toggle for older mobile devices.
+4. **Web Audio Synthesizer**:
+   - Zero-latency tactile sounds synthesized via Web Audio API: bouncy wooden clicks, bubbly elixir pops, gem chimes, and book slide swooshes.

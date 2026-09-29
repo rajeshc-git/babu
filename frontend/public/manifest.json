@@ -1,0 +1,30 @@
+{
+  "name": "Shyamal Choudhuri (1972-2026)",
+  "short_name": "Shyamal Choudhuri",
+  "description": "In Loving Memory of Shyamal Choudhuri (1972-2026). An interactive Clash of Clans inspired 3D digital memorial sanctuary and living archive.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#2b1408",
+  "theme_color": "#e06522",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/Assets/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/Assets/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/Assets/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

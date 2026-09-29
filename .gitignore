@@ -3,3 +3,12 @@
 Thumbs.db
 __pycache__/
 *.pyc
+
+# Dependencies & Build artifacts
+node_modules/
+.next/
+dist/
+out/
+backend/babu-server
+*.local
+.env.local

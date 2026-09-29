@@ -1,0 +1,918 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Luckiest+Guy&family=Outfit:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --coc-font-gaming: 'Luckiest Guy', cursive, sans-serif;
+  --coc-font-serif: 'Cinzel', serif;
+  --coc-font-sans: 'Outfit', sans-serif;
+
+  /* CoC Color Palette */
+  --coc-green-top: #a6f238;
+  --coc-green-mid: #68bd1e;
+  --coc-green-bot: #488911;
+  --coc-green-bevel: #234f06;
+  --coc-green-shadow: #122802;
+
+  --coc-orange-top: #ffab33;
+  --coc-orange-mid: #ee5f15;
+  --coc-orange-bot: #bc3508;
+  --coc-orange-bevel: #6e1903;
+  --coc-orange-shadow: #3b0b01;
+
+  --coc-blue-top: #4cb4ff;
+  --coc-blue-mid: #1d7ce8;
+  --coc-blue-bot: #0f54af;
+  --coc-blue-bevel: #072f6a;
+  --coc-blue-shadow: #031738;
+
+  --coc-elixir-purple: #c422c4;
+  --coc-elixir-glow: #f04bf0;
+  --coc-dark-elixir: #25d366;
+  --coc-gold: #ffcf29;
+
+  --wood-dark: #2c1a0e;
+  --wood-mid: #4a2f1b;
+  --wood-light: #73492a;
+  --gold-accent: #f5b025;
+
+  --parchment-bg: #f9f4ea;
+  --parchment-text: #2d241e;
+
+  /* Mobile Safe Areas */
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-left: env(safe-area-inset-left, 0px);
+  --safe-right: env(safe-area-inset-right, 0px);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh; /* Dynamic viewport height for mobile */
+  font-family: var(--coc-font-sans);
+  background-color: #1e3a12;
+  color: #ffffff;
+  overflow-x: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-text-size-adjust: 100%;
+  touch-action: manipulation; /* Prevent double-tap zoom */
+}
+
+/* Authentic Clash of Clans Isometric Grass Battlefield Background */
+.coc-battlefield-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background-color: #558721;
+  background-image: 
+    radial-gradient(circle at 50% 30%, rgba(138, 204, 53, 0.45) 0%, transparent 60%),
+    linear-gradient(135deg, rgba(35, 65, 12, 0.35) 25%, transparent 25%),
+    linear-gradient(225deg, rgba(35, 65, 12, 0.35) 25%, transparent 25%),
+    linear-gradient(315deg, rgba(35, 65, 12, 0.35) 25%, transparent 25%),
+    linear-gradient(45deg, rgba(35, 65, 12, 0.35) 25%, transparent 25%),
+    radial-gradient(circle, rgba(162, 222, 60, 0.2) 10%, transparent 20%);
+  background-size: 100% 100%, 64px 64px, 64px 64px, 64px 64px, 64px 64px, 128px 128px;
+  background-position: center, 0 0, 32px 0, 32px -32px, 0px 32px, 0 0;
+  pointer-events: none;
+}
+
+.coc-vignette {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  box-shadow: inset 0 0 120px rgba(10, 25, 5, 0.75), inset 0 0 40px rgba(0, 0, 0, 0.6);
+  pointer-events: none;
+}
+
+/* CoC Comic Cartoon Text Stroke */
+.coc-text-shadow {
+  font-family: var(--coc-font-gaming);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  paint-order: stroke fill;
+  -webkit-text-stroke: 1px #000000;
+  text-shadow: 0 2px 3px rgba(0, 0, 0, 0.85);
+  letter-spacing: 0.5px;
+}
+
+.coc-gold-text {
+  font-family: var(--coc-font-gaming);
+  color: #ffdf40;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  paint-order: stroke fill;
+  -webkit-text-stroke: 1px #3a1d00;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.85);
+}
+
+/* ========================================================
+   AUTHENTIC CLASH OF CLANS BUTTON REPLICATION (IMAGE MATCH)
+   ======================================================== */
+
+.coc-btn-base {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 18px;
+  border: 3.5px solid #141c10;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: var(--coc-font-gaming);
+  transition: transform 0.08s ease, filter 0.12s ease;
+  will-change: transform;
+  touch-action: manipulation;
+  -webkit-touch-callout: none;
+}
+
+.coc-btn-base:active {
+  transform: translateY(4px);
+}
+
+/* Orange Attack / Action Square Button */
+.coc-btn-orange-sq {
+  width: 78px;
+  height: 78px;
+  background: linear-gradient(180deg, var(--coc-orange-top) 0%, var(--coc-orange-mid) 48%, var(--coc-orange-bot) 100%);
+  border-color: #2b0e04;
+  border-bottom: 5px solid var(--coc-orange-bevel);
+  box-shadow: 
+    0 5px 0 var(--coc-orange-shadow),
+    0 7px 10px rgba(0, 0, 0, 0.65),
+    inset 0 2px 2px rgba(255, 255, 255, 0.45);
+}
+
+.coc-btn-orange-sq:active {
+  box-shadow: 
+    0 1px 0 var(--coc-orange-shadow),
+    0 2px 4px rgba(0, 0, 0, 0.75),
+    inset 0 1px 1px rgba(255, 255, 255, 0.3);
+}
+
+/* Green Collect / Action Square Button */
+.coc-btn-green-sq {
+  width: 78px;
+  height: 78px;
+  background: linear-gradient(180deg, var(--coc-green-top) 0%, var(--coc-green-mid) 48%, var(--coc-green-bot) 100%);
+  border-color: #162c08;
+  border-bottom: 5px solid var(--coc-green-bevel);
+  box-shadow: 
+    0 5px 0 var(--coc-green-shadow),
+    0 7px 10px rgba(0, 0, 0, 0.65),
+    inset 0 2px 2px rgba(255, 255, 255, 0.5);
+}
+
+.coc-btn-green-sq:active {
+  box-shadow: 
+    0 1px 0 var(--coc-green-shadow),
+    0 2px 4px rgba(0, 0, 0, 0.75),
+    inset 0 1px 1px rgba(255, 255, 255, 0.3);
+}
+
+/* Blue Voice / Audio Square Button */
+.coc-btn-blue-sq {
+  width: 78px;
+  height: 78px;
+  background: linear-gradient(180deg, #42b3ff 0%, #157ae8 48%, #0b4999 100%);
+  border-color: #06234f;
+  border-bottom: 5px solid #08346e;
+  box-shadow: 
+    0 5px 0 #041938,
+    0 7px 10px rgba(0, 0, 0, 0.65),
+    inset 0 2px 2px rgba(255, 255, 255, 0.55);
+}
+
+.coc-btn-blue-sq:active {
+  box-shadow: 
+    0 1px 0 #041938,
+    0 2px 4px rgba(0, 0, 0, 0.75),
+    inset 0 1px 1px rgba(255, 255, 255, 0.3);
+}
+
+/* Purple Video / Cinema Square Button */
+.coc-btn-purple-sq {
+  width: 78px;
+  height: 78px;
+  background: linear-gradient(180deg, #d34eff 0%, #a21cd6 48%, #6d0a94 100%);
+  border-color: #2b043b;
+  border-bottom: 5px solid #4a0963;
+  box-shadow: 
+    0 5px 0 #20022b,
+    0 7px 10px rgba(0, 0, 0, 0.65),
+    inset 0 2px 2px rgba(255, 255, 255, 0.5);
+}
+
+.coc-btn-purple-sq:active {
+  box-shadow: 
+    0 1px 0 #20022b,
+    0 2px 4px rgba(0, 0, 0, 0.75),
+    inset 0 1px 1px rgba(255, 255, 255, 0.3);
+}
+
+/* Glossy highlight line inside button */
+.coc-btn-gloss {
+  position: absolute;
+  top: 3px;
+  left: 6px;
+  right: 6px;
+  height: 40%;
+  border-radius: 12px 12px 6px 6px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0.05) 100%);
+  pointer-events: none;
+}
+
+/* CoC Button Label (e.g., "Info", "Attack") */
+.coc-btn-label {
+  font-family: var(--coc-font-gaming);
+  font-size: 14px;
+  color: #ffffff;
+  margin-top: 2px;
+  text-shadow:
+    -1.5px -1.5px 0 #000,
+     1.5px -1.5px 0 #000,
+    -1.5px  1.5px 0 #000,
+     1.5px  1.5px 0 #000,
+     0px 2px 0 #000;
+  letter-spacing: 0.5px;
+}
+
+/* Wide CoC Button (for Actions like "Offer Elixir", "Return to Shelf") */
+.coc-btn-wide-green {
+  padding: 10px 22px;
+  background: linear-gradient(180deg, var(--coc-green-top) 0%, var(--coc-green-mid) 48%, var(--coc-green-bot) 100%);
+  border-color: #162c08;
+  border-bottom: 5px solid var(--coc-green-bevel);
+  box-shadow: 0 5px 0 var(--coc-green-shadow), 0 7px 12px rgba(0, 0, 0, 0.65), inset 0 2px 2px rgba(255, 255, 255, 0.5);
+  font-size: 16px;
+  color: #ffffff;
+}
+
+.coc-btn-wide-orange {
+  padding: 10px 22px;
+  background: linear-gradient(180deg, var(--coc-orange-top) 0%, var(--coc-orange-mid) 48%, var(--coc-orange-bot) 100%);
+  border-color: #2b0e04;
+  border-bottom: 5px solid var(--coc-orange-bevel);
+  box-shadow: 0 5px 0 var(--coc-orange-shadow), 0 7px 12px rgba(0, 0, 0, 0.65), inset 0 2px 2px rgba(255, 255, 255, 0.45);
+  font-size: 16px;
+  color: #ffffff;
+}
+
+/* ========================================================
+   AUTHENTIC CLASH OF CLANS HORIZONTAL PILL BUTTONS
+   ======================================================== */
+
+.coc-btn-pill {
+  position: relative;
+  display: inline-flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer;
+  border-radius: 14px;
+  border: 3px solid #141c10;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: var(--coc-font-gaming);
+  transition: transform 0.08s ease, filter 0.12s ease;
+  will-change: transform;
+  touch-action: manipulation;
+  -webkit-touch-callout: none;
+  white-space: nowrap;
+  user-select: none;
+}
+
+.coc-btn-pill:active {
+  transform: translateY(3px);
+}
+
+.coc-btn-pill-green {
+  background: linear-gradient(180deg, var(--coc-green-top) 0%, var(--coc-green-mid) 48%, var(--coc-green-bot) 100%);
+  border-color: #162c08;
+  border-bottom: 4px solid var(--coc-green-bevel);
+  box-shadow: 
+    0 4px 0 var(--coc-green-shadow),
+    0 6px 10px rgba(0, 0, 0, 0.55),
+    inset 0 2px 2px rgba(255, 255, 255, 0.5);
+}
+
+.coc-btn-pill-green:active {
+  box-shadow: 
+    0 1px 0 var(--coc-green-shadow),
+    0 2px 4px rgba(0, 0, 0, 0.6),
+    inset 0 1px 1px rgba(255, 255, 255, 0.3);
+}
+
+.coc-btn-pill-orange {
+  background: linear-gradient(180deg, var(--coc-orange-top) 0%, var(--coc-orange-mid) 48%, var(--coc-orange-bot) 100%);
+  border-color: #2b0e04;
+  border-bottom: 4px solid var(--coc-orange-bevel);
+  box-shadow: 
+    0 4px 0 var(--coc-orange-shadow),
+    0 6px 10px rgba(0, 0, 0, 0.55),
+    inset 0 2px 2px rgba(255, 255, 255, 0.45);
+}
+
+.coc-btn-pill-orange:active {
+  box-shadow: 
+    0 1px 0 var(--coc-orange-shadow),
+    0 2px 4px rgba(0, 0, 0, 0.6),
+    inset 0 1px 1px rgba(255, 255, 255, 0.3);
+}
+
+.coc-btn-pill-blue {
+  background: linear-gradient(180deg, var(--coc-blue-top) 0%, var(--coc-blue-mid) 48%, var(--coc-blue-bot) 100%);
+  border-color: #06234f;
+  border-bottom: 4px solid #08346e;
+  box-shadow: 
+    0 4px 0 #041938,
+    0 6px 10px rgba(0, 0, 0, 0.55),
+    inset 0 2px 2px rgba(255, 255, 255, 0.55);
+}
+
+.coc-btn-pill-blue:active {
+  box-shadow: 
+    0 1px 0 #041938,
+    0 2px 4px rgba(0, 0, 0, 0.6),
+    inset 0 1px 1px rgba(255, 255, 255, 0.3);
+}
+
+/* Modal Form Inputs (Parchment CoC theme with high touch targets) */
+.coc-input-field {
+  width: 100%;
+  min-height: 44px;
+  background: #fdf6e6;
+  border: 2.5px solid #8c6843;
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 14px;
+  font-family: inherit;
+  color: #2b1408;
+  outline: none;
+  box-sizing: border-box;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.12);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.coc-input-field:focus {
+  border-color: #ffaa00;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.15), 0 0 8px rgba(255, 170, 0, 0.4);
+}
+
+.coc-select-field {
+  width: 100%;
+  min-height: 44px;
+  background: #fdf6e6 url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235b280b' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e") no-repeat right 12px center;
+  background-size: 16px;
+  appearance: none;
+  -webkit-appearance: none;
+  border: 2.5px solid #8c6843;
+  border-radius: 10px;
+  padding: 10px 38px 10px 14px;
+  font-size: 14px;
+  font-family: inherit;
+  color: #2b1408;
+  outline: none;
+  cursor: pointer;
+  box-sizing: border-box;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.12);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.coc-select-field:focus {
+  border-color: #ffaa00;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.15), 0 0 8px rgba(255, 170, 0, 0.4);
+}
+
+/* ========================================================
+   AUTHENTIC CLASH OF CLANS RESOURCE BARS (IMAGE MATCH)
+   ======================================================== */
+
+.coc-resource-bar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 160px;
+  height: 34px;
+  flex-shrink: 0;
+  background: rgba(16, 26, 14, 0.95);
+  border: 3px solid #141c10;
+  border-radius: 999px;
+  box-shadow: 
+    inset 0 3px 5px rgba(0, 0, 0, 0.8),
+    0 4px 6px rgba(0, 0, 0, 0.45);
+  padding: 2px;
+  box-sizing: border-box;
+}
+
+/* Purple Elixir Bar Fill */
+.coc-fill-elixir {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #ff5bf5 0%, #db26d8 45%, #9e119b 100%);
+  box-shadow: inset 0 2px 2px rgba(255, 255, 255, 0.6), 0 0 10px rgba(219, 38, 216, 0.6);
+  transition: width 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Green Dark Elixir / Life Bar Fill */
+.coc-fill-green {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #bdf54e 0%, #76d418 45%, #428e08 100%);
+  box-shadow: inset 0 2px 2px rgba(255, 255, 255, 0.6), 0 0 10px rgba(118, 212, 24, 0.6);
+  transition: width 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Glossy highlight over the resource fill */
+.coc-fill-highlight {
+  position: absolute;
+  top: 1px;
+  left: 4px;
+  right: 4px;
+  height: 45%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0.1) 100%);
+  border-radius: 999px;
+}
+
+/* Number text inside resource bar ("2 400") */
+.coc-resource-num {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-right: 14px;
+  font-family: var(--coc-font-gaming);
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #ffffff;
+  pointer-events: none;
+  z-index: 2;
+  letter-spacing: 0.5px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  paint-order: stroke fill;
+  -webkit-text-stroke: 0.75px #000000;
+  text-shadow: 0 1.5px 2px rgba(0, 0, 0, 0.9);
+}
+
+/* 3D Elixir Droplet Bulb attached to the right of the bar */
+.coc-droplet-bulb {
+  position: absolute;
+  right: -6px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+  filter: drop-shadow(0 3px 4px rgba(0, 0, 0, 0.7));
+  flex-shrink: 0;
+}
+
+/* ========================================================
+   CLASH OF CLANS MODAL & DIALOG WINDOWS
+   ======================================================== */
+
+.coc-modal-window {
+  background: linear-gradient(180deg, #d3c4a8 0%, #baaa8e 100%);
+  border: 5px solid #3c2415;
+  border-radius: 20px;
+  box-shadow: 
+    0 12px 30px rgba(0, 0, 0, 0.85),
+    inset 0 3px 3px rgba(255, 255, 255, 0.5),
+    inset 0 -4px 6px rgba(45, 25, 12, 0.5);
+  position: relative;
+  overflow: hidden;
+}
+
+.coc-modal-header {
+  background: linear-gradient(180deg, #5b3720 0%, #3e2212 100%);
+  border-bottom: 4px solid #231208;
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.coc-modal-close {
+  width: 38px;
+  height: 38px;
+  background: linear-gradient(180deg, #ff4c4c 0%, #b81e1e 100%);
+  border: 3px solid #380b0b;
+  border-bottom: 4px solid #260505;
+  border-radius: 10px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--coc-font-gaming);
+  font-size: 20px;
+  cursor: pointer;
+  box-shadow: 0 3px 0 #180303;
+  touch-action: manipulation;
+  flex-shrink: 0;
+}
+
+.coc-modal-close:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 #180303;
+}
+
+/* ========================================================
+   3D BOOKSHELF & DRAWER ANIMATIONS
+   ======================================================== */
+
+.bookshelf-stage {
+  perspective: 1400px;
+  perspective-origin: 50% 45%;
+  transform-style: preserve-3d;
+}
+
+.book-item-3d {
+  transition: transform 0.3s cubic-bezier(0.2, 0.85, 0.3, 1), box-shadow 0.3s ease;
+  transform-origin: center bottom;
+  cursor: pointer;
+  will-change: transform;
+  touch-action: manipulation;
+}
+
+.book-item-3d:hover {
+  transform: translateZ(45px) translateY(-14px) rotateX(-4deg);
+  filter: brightness(1.12);
+}
+
+/* Weathered Parchment Texture for Open Book */
+.parchment-sheet {
+  background: 
+    radial-gradient(circle at 10% 10%, rgba(255, 255, 255, 0.5) 0%, transparent 40%),
+    linear-gradient(180deg, #fdf9ed 0%, #f4ead4 50%, #eae0c6 100%);
+  box-shadow: 
+    inset 0 0 30px rgba(120, 85, 45, 0.25),
+    0 10px 30px rgba(0, 0, 0, 0.45);
+  border: 1px solid #d4c5a9;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(20, 35, 12, 0.8);
+}
+::-webkit-scrollbar-thumb {
+  background: #5b3720;
+  border-radius: 4px;
+  border: 1px solid #73492a;
+}
+
+/* ========================================================
+   ANIMATIONS
+   ======================================================== */
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(100%); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes slideDown {
+  from { transform: translateY(-100%); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes slideInRight {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+@keyframes slideInLeft {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(0); }
+}
+
+@keyframes slideOutRight {
+  from { transform: translateX(0); }
+  to { transform: translateX(100%); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 8px rgba(255, 215, 0, 0.3); }
+  50% { box-shadow: 0 0 20px rgba(255, 215, 0, 0.7); }
+}
+
+@keyframes breathe {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+}
+
+/* ========================================================
+   HAMBURGER MENU (Classic 3-Bar CoC Button)
+   ======================================================== */
+
+.hamburger-btn {
+  display: flex;
+  position: relative;
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: linear-gradient(180deg, var(--coc-orange-top) 0%, var(--coc-orange-mid) 48%, var(--coc-orange-bot) 100%);
+  border: 2.5px solid #2b0e04;
+  border-bottom: 3.5px solid var(--coc-orange-bevel);
+  box-shadow: 0 3px 0 var(--coc-orange-shadow), 0 4px 6px rgba(0, 0, 0, 0.6);
+  cursor: pointer;
+  z-index: 55;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 0;
+  touch-action: manipulation;
+  flex-shrink: 0;
+}
+
+.hamburger-btn:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 var(--coc-orange-shadow);
+}
+
+.hamburger-line {
+  display: block;
+  width: 20px;
+  height: 2.5px;
+  background: #ffffff;
+  border-radius: 2px;
+  transition: transform 0.25s ease, opacity 0.15s ease;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.6);
+}
+
+.hamburger-btn.is-open .hamburger-line:nth-child(1) {
+  transform: translateY(6.5px) rotate(45deg);
+}
+.hamburger-btn.is-open .hamburger-line:nth-child(2) {
+  opacity: 0;
+}
+.hamburger-btn.is-open .hamburger-line:nth-child(3) {
+  transform: translateY(-6.5px) rotate(-45deg);
+}
+
+/* Mobile Side Drawer (Slides from LEFT side, CoC styled) */
+.mobile-drawer-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 52;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(4px);
+  animation: fadeIn 0.2s ease-out;
+}
+
+.mobile-drawer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 280px;
+  max-width: 82vw;
+  z-index: 53;
+  background: linear-gradient(180deg, #3d2415 0%, #231006 100%);
+  border-right: 5px solid #6b3e21;
+  box-shadow: 10px 0 40px rgba(0,0,0,0.8);
+  display: flex;
+  flex-direction: column;
+  animation: slideInLeft 0.3s cubic-bezier(0.22, 0.61, 0.36, 1);
+  padding-top: calc(var(--safe-top) + 12px);
+  padding-bottom: calc(var(--safe-bottom) + 12px);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.mobile-drawer-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 20px;
+  border-bottom: 2px solid rgba(91, 55, 32, 0.5);
+  color: #f4ead4;
+  font-family: var(--coc-font-gaming);
+  font-size: 16px;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: background 0.15s ease;
+  text-shadow: 0 2px 3px rgba(0,0,0,0.6);
+  letter-spacing: 0.5px;
+}
+
+.mobile-drawer-item:active {
+  background: rgba(255, 200, 50, 0.15);
+}
+
+.mobile-drawer-item-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+/* ========================================================
+   MOBILE RESPONSIVE BREAKPOINTS
+   ======================================================== */
+
+/* Tablets (640px - 1023px) */
+@media (max-width: 1023px) {
+  .coc-resource-bar {
+    width: 170px;
+    height: 34px;
+  }
+  .coc-resource-num {
+    font-size: 14px;
+  }
+  .coc-droplet-bulb {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+/* Smartphones (under 640px) - iPhone SE, iPhone 16, etc. */
+@media (max-width: 639px) {
+  .hamburger-btn {
+    display: flex;
+  }
+
+  /* Compact resource bars for mobile HUD */
+  .coc-resource-bar {
+    width: 96px;
+    height: 28px;
+  }
+  .coc-resource-num {
+    font-size: 11px;
+    letter-spacing: 0.2px;
+    padding-right: 10px;
+    -webkit-text-stroke: 0.55px #000000;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9);
+  }
+  .coc-droplet-bulb {
+    width: 26px;
+    height: 26px;
+    right: -5px;
+  }
+
+  /* Smaller CoC buttons on mobile */
+  .coc-btn-orange-sq,
+  .coc-btn-green-sq,
+  .coc-btn-blue-sq,
+  .coc-btn-purple-sq {
+    width: 58px;
+    height: 58px;
+    border-radius: 14px;
+    border-width: 2.5px;
+    border-bottom-width: 4px;
+  }
+
+  .coc-btn-label {
+    font-size: 11px;
+  }
+
+  .coc-btn-gloss {
+    top: 2px;
+    left: 4px;
+    right: 4px;
+    border-radius: 8px 8px 4px 4px;
+  }
+
+  /* Full-screen modals on mobile */
+  .coc-modal-window {
+    border-radius: 0 !important;
+    border-width: 0 !important;
+    max-width: 100vw !important;
+    max-height: 100vh !important;
+    max-height: 100dvh !important;
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  .coc-modal-header {
+    padding: 10px 14px;
+    padding-top: calc(var(--safe-top) + 10px);
+  }
+
+  .coc-modal-close {
+    width: 36px;
+    height: 36px;
+    font-size: 18px;
+  }
+
+  /* Disable 3D hover on touch devices - use active states instead */
+  .book-item-3d:hover {
+    transform: none;
+    filter: none;
+  }
+  .book-item-3d:active {
+    transform: translateY(-8px) scale(0.97);
+    filter: brightness(1.15);
+  }
+
+  /* Better scrollbar for mobile (thinner) */
+  ::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+
+  /* Compact text shadows for smaller screens */
+  .coc-text-shadow {
+    -webkit-text-stroke: 0.75px #000000;
+    text-shadow: 0 1.5px 2px rgba(0, 0, 0, 0.85);
+  }
+
+  .coc-gold-text {
+    -webkit-text-stroke: 0.75px #3a1d00;
+    text-shadow: 0 1.5px 2px rgba(0, 0, 0, 0.85);
+  }
+}
+
+/* Extra small phones (iPhone SE, etc. under 375px) */
+@media (max-width: 374px) {
+  .coc-resource-bar {
+    width: 100px;
+    height: 26px;
+  }
+  .coc-resource-num {
+    font-size: 10px;
+    padding-right: 8px;
+    -webkit-text-stroke: 0.45px #000000;
+  }
+  .coc-droplet-bulb {
+    width: 26px;
+    height: 26px;
+  }
+  .coc-btn-orange-sq,
+  .coc-btn-green-sq,
+  .coc-btn-blue-sq,
+  .coc-btn-purple-sq {
+    width: 50px;
+    height: 50px;
+  }
+  .coc-btn-label {
+    font-size: 10px;
+  }
+}
+
+/* ========================================================
+   TOUCH OPTIMIZATIONS
+   ======================================================== */
+
+/* Increase hit targets on touch devices */
+@media (hover: none) and (pointer: coarse) {
+  button, [role="button"], a {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Disable hover effects that don't work on touch */
+  .book-item-3d:hover {
+    transform: none;
+    filter: none;
+  }
+}
+
+/* Prevent pull-to-refresh on mobile */
+body {
+  overscroll-behavior-y: contain;
+}
+
+/* ========================================================
+   LANDSCAPE MOBILE
+   ======================================================== */
+
+@media (max-height: 500px) and (orientation: landscape) {
+  .coc-resource-bar {
+    width: 130px;
+    height: 26px;
+  }
+}

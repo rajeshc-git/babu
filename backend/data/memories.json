@@ -1,0 +1,536 @@
+{
+  "shelves": [
+    {
+      "id": "roots",
+      "title": "Roots & Early Dawn",
+      "subtitle": "Childhood, Heritage & Early Dreams",
+      "era": "1972 \u2014 1995",
+      "icon": "\ud83c\udf31",
+      "bookColor": "#2a623d",
+      "memoryCount": 4
+    },
+    {
+      "id": "family",
+      "title": "Pillar of the Family",
+      "subtitle": "Fatherhood, Loving Hearth & Celebrations",
+      "era": "1996 \u2014 2018",
+      "icon": "\ud83c\udfe1",
+      "bookColor": "#c2541a",
+      "memoryCount": 6
+    },
+    {
+      "id": "wisdom",
+      "title": "Sacred Sayings & Guidance",
+      "subtitle": "Guiding Principles, Patience & Strength",
+      "era": "Lifelong Truths",
+      "icon": "\ud83d\udcdc",
+      "bookColor": "#8b3a82",
+      "memoryCount": 5
+    },
+    {
+      "id": "whispers",
+      "title": "Voice of Babu",
+      "subtitle": "Original Voice Notes & Gentle Phone Calls",
+      "era": "2025 \u2014 2026",
+      "icon": "\ud83c\udf99\ufe0f",
+      "bookColor": "#1b4d89",
+      "memoryCount": 5
+    },
+    {
+      "id": "eternal",
+      "title": "Everlasting Legacy",
+      "subtitle": "Prayers, Tributes & Timeless Remembrance",
+      "era": "Forever Glowing",
+      "icon": "\u2b50",
+      "bookColor": "#b8860b",
+      "memoryCount": 4
+    }
+  ],
+  "memories": [
+    {
+      "id": "mem-1",
+      "shelfId": "roots",
+      "title": "The Boy from the Golden Meadows",
+      "era": "1972 \u2014 1980",
+      "date": "Spring 1972",
+      "excerpt": "Born with an innate kindness that radiated into every home he stepped in.",
+      "story": "From his earliest youth in 1972, Shyamal was known for his calm temperament and radiant smile. He grew up appreciating the simplicity of life, respecting elders, and offering shelter and kindness to anyone in need. His upbringing formed the bedrock of unwavering integrity that defined his entire journey.",
+      "quote": "Live with a heart so light that everyone feels safe near you.",
+      "imagePath": "/Assets/Image/Rajesh Father.png",
+      "tags": [
+        "Roots",
+        "Childhood",
+        "Simplicity"
+      ],
+      "elixirCount": 0,
+      "flamesCount": 0,
+      "starsCount": 0,
+      "color": "#2a623d"
+    },
+    {
+      "id": "mem-2",
+      "shelfId": "roots",
+      "title": "Traditions of the Soil & Sun",
+      "era": "1981 \u2014 1988",
+      "date": "August 1985",
+      "excerpt": "Learning ancient traditions of generosity, quiet discipline, and neighborly care.",
+      "story": "Babu loved sunrise mornings and the earthy calm of village gardens. He learned from his parents that true nobility is not measured in wealth, but in how gently you treat those who can do nothing for you in return.",
+      "quote": "A kind word spoken in the morning carries blessings throughout the whole day.",
+      "imagePath": "/Assets/Image/IMG20241202160919.jpg",
+      "tags": [
+        "Heritage",
+        "Tradition",
+        "Morning Sun"
+      ],
+      "elixirCount": 0,
+      "flamesCount": 0,
+      "starsCount": 0,
+      "color": "#337045"
+    },
+    {
+      "id": "mem-3",
+      "shelfId": "roots",
+      "title": "Youth of Quiet Resolve",
+      "era": "1989 \u2014 1995",
+      "date": "Summer 1990",
+      "excerpt": "Step by step building his foundation with patience, tireless work, and optimism.",
+      "story": "As a young man stepping into adulthood, Shyamal worked tirelessly without complaint. He faced every obstacle with a serene composure that gave confidence to everyone around him.",
+      "quote": "Do your duty with an honest heart, and leave the fruits to providence.",
+      "imagePath": "/Assets/Image/IMG20241202160929.jpg",
+      "tags": [
+        "Youth",
+        "Discipline",
+        "Resolve"
+      ],
+      "elixirCount": 0,
+      "flamesCount": 0,
+      "starsCount": 0,
+      "color": "#205430"
+    },
+    {
+      "id": "mem-4",
+      "shelfId": "roots",
+      "title": "Friendship Under Open Skies",
+      "era": "1992 \u2014 1995",
+      "date": "October 1993",
+      "excerpt": "A steadfast friend who stood by companions through every joy and hardship.",
+      "story": "His childhood friends always recalled how Babu would walk miles just to check on a friend who was unwell. His loyalty was steadfast and his companionship brought peace.",
+      "quote": "A true friend is one who walks in when the rest of the world walks out.",
+      "imagePath": "/Assets/Image/IMG_6949.jpg",
+      "tags": [
+        "Friendship",
+        "Loyalty",
+        "Warmth"
+      ],
+      "elixirCount": 0,
+      "flamesCount": 0,
+      "starsCount": 0,
+      "color": "#2f6b3e"
+    },
+    {
+      "id": "mem-5",
+      "shelfId": "family",
+      "title": "Father's Warm Embrace",
+      "era": "1996 \u2014 2005",
+      "date": "October 9, 2022",
+      "excerpt": "A protective fortress for his children, guiding them through every storm with quiet resolve.",
+      "story": "He never raised his voice to impart wisdom. Instead, he led through personal example\u2014waking early, ensuring everyone was fed and content before he rested, and blessing every celebration with heartfelt laughter and genuine hospitality.",
+      "quote": "You do not build peace through words; you build it through patience and service.",
+      "imagePath": "/Assets/Image/IMG20221009141535.jpg",
+      "tags": [
+        "Fatherhood",
+        "Family",
+        "Blessings"
+      ],
+      "elixirCount": 0,
+      "flamesCount": 0,
+      "starsCount": 0,
+      "color": "#c2541a"
+    },
+    {
+      "id": "mem-6",
+      "shelfId": "family",
+      "title": "The Festive Evening at Home",
+      "era": "November 2024",
+      "date": "Nov 29, 2024",
+      "excerpt": "Surrounded by relatives, sharing sweets, and reminding everyone of the value of togetherness.",
+      "story": "During festive gatherings, Babu was the centerpiece of warmth. He would check in on each person individually, making sure no one felt left out. His quiet joy in seeing his family together was his greatest happiness.",
+      "quote": "When the family stands united under one roof, no trouble can touch us.",
+      "imagePath": "/Assets/Image/IMG20241129222859.jpg",
+      "tags": [
+        "Festivals",
+        "Unity",
+        "Celebration"
+      ],
+      "elixirCount": 0,
+      "flamesCount": 0,
+      "starsCount": 0,
+      "color": "#d46022"
+    },
+    {
+      "id": "mem-7",
+      "shelfId": "family",
+      "title": "Guiding Steps: A Father's Devotion",
+      "era": "2005 \u2014 2018",
+      "date": "October 9, 2022",
+      "excerpt": "Watching his children grow, offering gentle advice and unconditional encouragement.",
+      "story": "Whether cheering on academic achievements or comforting during setbacks, Babu always provided a safe harbor. He taught his family to celebrate small joys and meet difficulties with prayer and faith.",
+      "quote": "No matter how far you travel, remember that our door and hearts are always open.",
+      "imagePath": "/Assets/Image/IMG20221009141541.jpg",
+      "tags": [
+        "Fatherhood",
+        "Guidance",
+        "Encouragement"
+      ],
+      "elixirCount": 0,
+      "flamesCount": 0,
+      "starsCount": 0,
+      "color": "#b34512"
+    },
+    {
+      "id": "mem-8",
+      "shelfId": "family",
+      "title": "Hearth of Hospitality & Warm Tea",
+      "era": "December 2024",
+      "date": "Dec 2, 2024",
+      "excerpt": "The family living room where hot tea, laughter, and stories flowed freely.",
+      "story": "Anyone who visited Babu never left with an empty stomach or a heavy heart. He had a natural gift for making guests feel like family within minutes of sitting down together.",
+      "quote": "Serving food to a guest is like offering worship in your own home.",
+      "imagePath": "/Assets/Image/IMG20241202161034.jpg",
+      "tags": [
+        "Hospitality",
+        "Hearth",
+        "Togetherness"
+      ],
+      "elixirCount": 0,
+      "flamesCount": 0,
+      "starsCount": 0,
+      "color": "#c45a20"
+    },
+    {
+      "id": "mem-9",
+      "shelfId": "family",
+      "title": "Winter Reunion with Loved Ones",
+      "era": "December 2025",
+      "date": "Dec 20, 2025",
+      "excerpt": "A joyful winter gathering bringing smiles, photographs, and cherished memories.",
+      "story": "In the cool winter of 2025, family traveled from near and far. Babu took photographs with everyone, his eyes twinkling with happiness as children played around him.",
+      "quote": "The sweetest wealth a man possesses is a loving family in good health.",
+      "imagePath": "/Assets/Image/IMG20251220210955.jpg",
+      "tags": [
+        "Winter",
+        "Reunion",
+        "Smiles"
+      ],
+      "elixirCount": 0,
+      "flamesCount": 0,
+      "starsCount": 0,
+      "color": "#a83c0e"
+    },
+    {
+      "id": "mem-10",
+      "shelfId": "family",
+      "title": "Summer Afternoon Blessings",
+      "era": "June 2025",
+      "date": "June 30, 2025",
+      "excerpt": "A calm summer afternoon filled with peaceful smiles and heartfelt blessings.",
+      "story": "Sitting peacefully on a warm June afternoon, Babu shared stories of older times, reminding the younger generation to stay grounded, cherish their roots, and care for one another.",
+      "quote": "Keep love in your heart; a life without it is like a sunless garden.",
+      "imagePath": "/Assets/Image/IMG20250630165008.jpg",
+      "tags": [
+        "Summer",
+        "Blessings",
+        "Peace"
+      ],
+      "elixirCount": 0,
+      "flamesCount": 0,
+      "starsCount": 0,
+      "color": "#b84d18"
+    },
+    {
+      "id": "mem-11",
+      "shelfId": "wisdom",
+      "title": "The Golden Words of Composure",
+      "era": "December 2024",
+      "date": "Dec 15, 2024",
+      "excerpt": "Never react in anger; give every troubled moment 24 hours to reveal its truth.",
+      "story": "Whenever hardships arose, Babu\u2019s advice was always measured. He taught us to look beyond immediate friction and focus on long-term harmony. His calm presence could diffuse any tension in a room within seconds.",
+      "quote": "Patience is not weakness; it is the ultimate quiet power.",
+      "imagePath": "/Assets/Image/IMG20241215203600.jpg",
+      "tags": [
+        "Wisdom",
+        "Peace",
+        "Advice"
+      ],
+      "elixirCount": 0,
+      "flamesCount": 0,
+      "starsCount": 0,
+      "color": "#8b3a82"
+    },
+    {
+      "id": "mem-12",
+      "shelfId": "wisdom",
+      "title": "Quiet Generosity",
+      "era": "Lifelong Truths",
+      "date": "Dec 18, 2024",
+      "excerpt": "Giving without fanfare or expectation of applause.",
+      "story": "Babu helped countless people in secret. When asked why he never mentioned his good deeds, he would simply smile and say that the left hand should never know what the right hand gives.",
+      "quote": "Charity done in silence carries the sweetest fragrance to the heavens.",
+      "imagePath": "/Assets/Image/IMG20241218223006.jpg",
+      "tags": [
+        "Generosity",
+        "Humility",
+        "Grace"
+      ],
+      "elixirCount": 0,
+      "flamesCount": 0,
+      "starsCount": 0,
+      "color": "#752d6d"
+    },
+    {
+      "id": "mem-13",
+      "shelfId": "wisdom",
+      "title": "Listening Before Speaking",
+      "era": "Lifelong Truths",
+      "date": "Dec 27, 2024",
+      "excerpt": "The rare art of listening with your whole soul before offering guidance.",
+      "story": "Whenever anyone brought a problem to Babu, he never interrupted. He would listen intently, nodding, understanding the pain behind the words, and then speak with gentle wisdom that soothed the heart.",
+      "quote": "Most people listen to reply; wise people listen to understand.",
+      "imagePath": "/Assets/Image/IMG20241227195734.jpg",
+      "tags": [
+        "Understanding",
+        "Listening",
+        "Empathy"
+      ],
+      "elixirCount": 0,
+      "flamesCount": 0,
+      "starsCount": 0,
+      "color": "#96428c"
+    },
+    {
+      "id": "mem-14",
+      "shelfId": "wisdom",
+      "title": "Contentment in Simple Living",
+      "era": "Lifelong Truths",
+      "date": "Nov 29, 2024",
+      "excerpt": "Finding profound richness in simple pleasures, clean thoughts, and a peaceful mind.",
+      "story": "He never chased superficial luxury. Babu found supreme joy in fresh air, a cup of tea with loved ones, good health, and an honest night's rest with a clean conscience.",
+      "quote": "Contentment is the greatest treasure one can ever own.",
+      "imagePath": "/Assets/Image/IMG20241129222911.jpg",
+      "tags": [
+        "Simplicity",
+        "Contentment",
+        "Peace"
+      ],
+      "elixirCount": 0,
+      "flamesCount": 0,
+      "starsCount": 0,
+      "color": "#6c2765"
+    },
+    {
+      "id": "mem-15",
+      "shelfId": "wisdom",
+      "title": "Walking with Integrity",
+      "era": "Lifelong Truths",
+      "date": "Dec 15, 2024",
+      "excerpt": "Doing the right thing even when no one is watching.",
+      "story": "Babu lived with an unshakeable moral compass. In business, in family matters, and in community life, his word was his bond. People trusted him implicitly.",
+      "quote": "Integrity is choosing your thoughts and actions based on values rather than personal gain.",
+      "imagePath": "/Assets/Image/IMG20241215203606.jpg",
+      "tags": [
+        "Integrity",
+        "Honor",
+        "Truth"
+      ],
+      "elixirCount": 0,
+      "flamesCount": 0,
+      "starsCount": 0,
+      "color": "#82347a"
+    },
+    {
+      "id": "mem-16",
+      "shelfId": "whispers",
+      "title": "Babu's New Year Voice Blessing",
+      "era": "January 2026",
+      "date": "Jan 1, 2026",
+      "excerpt": "His original spoken voice offering heartfelt prayers and blessings for the new year.",
+      "story": "Hearing Babu\u2019s voice brings an immediate rush of reassurance and love. In this recording, his gentle tone, caring inquiries about health, and loving blessings remain captured for future generations.",
+      "quote": "Stay healthy, take care of each other, and may god always bless your path.",
+      "imagePath": "/Assets/Image/IMG20260103201021.jpg",
+      "audioPath": "/Assets/Voice/Babu Voice 1.mp3",
+      "tags": [
+        "Voice",
+        "Blessing",
+        "Audio Recording"
+      ],
+      "elixirCount": 0,
+      "flamesCount": 0,
+      "starsCount": 0,
+      "color": "#1b4d89"
+    },
+    {
+      "id": "mem-17",
+      "shelfId": "whispers",
+      "title": "Evening Telephone Guidance",
+      "era": "January 2026",
+      "date": "Jan 10, 2026",
+      "excerpt": "An authentic recorded phone call where he asks about daily life and reminds us to eat well.",
+      "story": "No matter how busy the day was, Babu made sure to check on his loved ones. Every evening phone call carried his warmth, reminding us that love is shown through small daily considerations.",
+      "quote": "Have you had your dinner? Do not sleep late, rest well.",
+      "imagePath": "/Assets/Image/IMG20260107041822.jpg",
+      "audioPath": "/Assets/Voice/Samal(00919856140920)_20260110181813.mp3.mpeg",
+      "tags": [
+        "Voice",
+        "Care",
+        "Daily Life"
+      ],
+      "elixirCount": 0,
+      "flamesCount": 0,
+      "starsCount": 0,
+      "color": "#184275"
+    },
+    {
+      "id": "mem-18",
+      "shelfId": "whispers",
+      "title": "Morning Check-In: Are You Well?",
+      "era": "January 2026",
+      "date": "Jan 11, 2026",
+      "excerpt": "A caring morning voice note inquiring about everyone's health and morning routine.",
+      "story": "Babu was always the first to wake and greet the household. His morning check-in calls gave immense comfort, starting every family member's day with gentle blessings and affection.",
+      "quote": "Wake up with a thankful heart and keep your mind peaceful today.",
+      "imagePath": "/Assets/Image/IMG20260103201029.jpg",
+      "audioPath": "/Assets/Voice/Samal(00919856140920)_20260111085032.mp3.mpeg",
+      "tags": [
+        "Voice",
+        "Morning",
+        "Affection"
+      ],
+      "elixirCount": 0,
+      "flamesCount": 0,
+      "starsCount": 0,
+      "color": "#215aa0"
+    },
+    {
+      "id": "mem-19",
+      "shelfId": "whispers",
+      "title": "Gentle Advice on a Winter Evening",
+      "era": "January 2026",
+      "date": "Jan 2, 2026",
+      "excerpt": "Spoken conversation discussing daily chores, family matters, and mutual well-being.",
+      "story": "The tone of his voice in this conversation reveals his natural empathy. Even when tired, he listened patiently to every detail and offered reassuring comfort.",
+      "quote": "Do not worry about tomorrow; handle today with calm and courage.",
+      "imagePath": "/Assets/Image/IMG20260107041828.jpg",
+      "audioPath": "/Assets/Voice/Samal(00919856140920)_20260102185502.mp3.mpeg",
+      "tags": [
+        "Voice",
+        "Reassurance",
+        "Courage"
+      ],
+      "elixirCount": 0,
+      "flamesCount": 0,
+      "starsCount": 0,
+      "color": "#153c6e"
+    },
+    {
+      "id": "mem-20",
+      "shelfId": "whispers",
+      "title": "Cherished Words & Family Blessings",
+      "era": "January 2026",
+      "date": "Jan 11, 2026",
+      "excerpt": "A touching audio recording expressing heartfelt prayers for his children and grandchildren.",
+      "story": "This treasured audio recording captures Babu in his true essence: wishing health, prosperity, and peace for his loved ones, leaving an immortal voice legacy for generations to hear.",
+      "quote": "My blessings are always with you, in every step of your life.",
+      "imagePath": "/Assets/Image/IMG_7127.jpg",
+      "audioPath": "/Assets/Voice/Babu Voice 2.mp3",
+      "tags": [
+        "Voice",
+        "Legacy",
+        "Eternal Blessing"
+      ],
+      "elixirCount": 0,
+      "flamesCount": 0,
+      "starsCount": 0,
+      "color": "#286bb5"
+    },
+    {
+      "id": "mem-21",
+      "shelfId": "eternal",
+      "title": "The Everlasting Lotus Shrine",
+      "era": "March 6, 2026",
+      "date": "March 6, 2026",
+      "excerpt": "His physical journey concluded, but his spirit and love shine forever in our hearts.",
+      "story": "On March 6, 2026, Babu embarked on his heavenly voyage. This sacred sanctuary was erected so that everyone who cherished him can pull his books from the shelf, read his life story, and send tributes of light.",
+      "quote": "Those we love do not go away; they walk beside us every day unseen and always loved.",
+      "imagePath": "/Assets/Image/IMG_7156.PNG",
+      "tags": [
+        "Memorial",
+        "Sanctuary",
+        "Eternal Love"
+      ],
+      "elixirCount": 0,
+      "flamesCount": 0,
+      "starsCount": 0,
+      "color": "#b8860b"
+    },
+    {
+      "id": "mem-22",
+      "shelfId": "eternal",
+      "title": "Living in Our Daily Actions",
+      "era": "March 2026 & Beyond",
+      "date": "March 8, 2026",
+      "excerpt": "Continuing his legacy through acts of kindness, patience, and family devotion.",
+      "story": "The truest way to honor Babu is by living the values he embodied. Every time we speak gently to a child, offer food to a guest, or choose patience over anger, his spirit smiles through us.",
+      "quote": "A good man lives twice: first in his own life, and forever in the memories of those who loved him.",
+      "imagePath": "/Assets/Image/IMG_7255.PNG",
+      "tags": [
+        "Legacy",
+        "Values",
+        "Kindness"
+      ],
+      "elixirCount": 0,
+      "flamesCount": 0,
+      "starsCount": 0,
+      "color": "#c99718"
+    },
+    {
+      "id": "mem-23",
+      "shelfId": "eternal",
+      "title": "The Guiding Light that Never Fades",
+      "era": "Forever Glowing",
+      "date": "March 9, 2026",
+      "excerpt": "A beacon of warmth, wisdom, and strength guiding our family through generations.",
+      "story": "Though we miss his physical presence, his guidance remains alive in our memories. His laughter echoes in our homes, and his lessons illuminate our path forward.",
+      "quote": "Love is eternal; the connection between parent and child can never be broken.",
+      "imagePath": "/Assets/Image/IMG_7268.PNG",
+      "tags": [
+        "Guiding Light",
+        "Remembrance",
+        "Forever"
+      ],
+      "elixirCount": 0,
+      "flamesCount": 0,
+      "starsCount": 0,
+      "color": "#a37707"
+    },
+    {
+      "id": "mem-24",
+      "shelfId": "eternal",
+      "title": "Forever in Our Hearts & Prayers",
+      "era": "Eternity",
+      "date": "March 14, 2026",
+      "excerpt": "Surrounded by the love and prayers of all who were touched by his beautiful soul.",
+      "story": "Every diya lit, every star awarded, and every heartfelt tribute written here joins an endless constellation of love honoring Shyamal Choudhuri. May his soul rest in eternal peace.",
+      "quote": "You left us peaceful memories; your love is still our guide.",
+      "imagePath": "/Assets/Image/IMG_7269.PNG",
+      "tags": [
+        "Peace",
+        "Prayers",
+        "Constellation"
+      ],
+      "elixirCount": 0,
+      "flamesCount": 0,
+      "starsCount": 0,
+      "color": "#d4a01e"
+    }
+  ]
+}

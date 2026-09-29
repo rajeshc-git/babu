@@ -1,0 +1,7 @@
+node_modules
+.next
+.git
+public/Assets
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
