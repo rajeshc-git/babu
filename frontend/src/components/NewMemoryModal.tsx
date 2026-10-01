@@ -103,16 +103,23 @@ export function NewMemoryModal({ isOpen, onClose, onAddMemory }: NewMemoryModalP
   if (!isOpen) return null;
 
   const handleTogglePreviewAudio = (url: string) => {
-    playCoCClick(1.1);
     if (!audioPreviewRef.current) return;
+    const encodedUrl = encodeURI(url);
 
     if (isPlayingPreview) {
       audioPreviewRef.current.pause();
       setIsPlayingPreview(false);
     } else {
-      audioPreviewRef.current.src = url;
-      audioPreviewRef.current.play().then(() => setIsPlayingPreview(true)).catch(() => {});
+      audioPreviewRef.current.src = encodedUrl;
+      audioPreviewRef.current.load();
+      const playPromise = audioPreviewRef.current.play();
+      if (playPromise !== undefined) {
+        playPromise
+          .then(() => setIsPlayingPreview(true))
+          .catch((err) => console.warn("Preview play error:", err));
+      }
     }
+    playCoCClick(1.1);
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -180,14 +187,14 @@ export function NewMemoryModal({ isOpen, onClose, onAddMemory }: NewMemoryModalP
           overflowY: "auto",
         }}
       >
-        <audio ref={audioPreviewRef} onEnded={() => setIsPlayingPreview(false)} />
+        <audio ref={audioPreviewRef} playsInline preload="auto" onEnded={() => setIsPlayingPreview(false)} />
 
         {/* Modal Header */}
         <div className="coc-modal-header" style={{ padding: "12px 16px" }}>
           <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
             <BookPlus color="#ffd700" size={22} style={{ filter: "drop-shadow(0 1px 2px rgba(0,0,0,0.8))" }} />
             <span className="coc-gold-text" style={{ fontSize: "16px", letterSpacing: "0.5px" }}>
-              INSCRIBE NEW BOOK
+              ADD NEW BOOK
             </span>
           </div>
 
@@ -441,7 +448,7 @@ export function NewMemoryModal({ isOpen, onClose, onAddMemory }: NewMemoryModalP
             }}
           >
             <div className="coc-btn-gloss" />
-            <span className="coc-text-shadow">✨ Inscribe Book to Library</span>
+            <span className="coc-text-shadow">✨ ADD Book to Library</span>
           </button>
         </form>
       </div>

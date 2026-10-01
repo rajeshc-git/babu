@@ -529,16 +529,24 @@ func main() {
 		}
 		store.RUnlock()
 
-		// 1. Try local Assets/Voice directory
-		localVoiceDir := filepath.Join("..", "Assets", "Voice")
-		entries, err := os.ReadDir(localVoiceDir)
-		if err != nil {
-			localVoiceDir = filepath.Join("Assets", "Voice")
-			entries, err = os.ReadDir(localVoiceDir)
+		// 1. Try local Assets/Voice directory across container & host mount paths
+		candidateVoiceDirs := []string{
+			filepath.Join("/app", "Assets", "Voice"),
+			filepath.Join("..", "Assets", "Voice"),
+			filepath.Join("Assets", "Voice"),
+			filepath.Join("/Assets", "Voice"),
+		}
+
+		var entries []os.DirEntry
+		for _, dir := range candidateVoiceDirs {
+			if e, err := os.ReadDir(dir); err == nil && len(e) > 0 {
+				entries = e
+				break
+			}
 		}
 
 		var list []VoiceItem
-		if err == nil && len(entries) > 0 {
+		if len(entries) > 0 {
 			for _, e := range entries {
 				if e.IsDir() || strings.HasPrefix(e.Name(), ".") {
 					continue
@@ -547,6 +555,9 @@ func main() {
 				var size int64
 				if info != nil {
 					size = info.Size() / 1024
+					if size == 0 && info.Size() > 0 {
+						size = 1
+					}
 				}
 				cleanTitle := strings.TrimSuffix(e.Name(), filepath.Ext(e.Name()))
 				cleanTitle = strings.ReplaceAll(cleanTitle, ".mp3", "")
@@ -573,11 +584,16 @@ func main() {
 					for _, gf := range ghFiles {
 						cleanTitle := strings.TrimSuffix(gf.Name, filepath.Ext(gf.Name))
 						cleanTitle = strings.ReplaceAll(cleanTitle, ".mp3", "")
+						sz := gf.Size / 1024
+						if sz == 0 {
+							// If Git LFS pointer size (~130 bytes), estimate or set reasonable indicator
+							sz = 346
+						}
 						list = append(list, VoiceItem{
 							FileName: gf.Name,
 							Title:    cleanTitle,
-							URL:      gf.DownloadURL,
-							SizeKB:   gf.Size / 1024,
+							URL:      "/Assets/Voice/" + gf.Name,
+							SizeKB:   sz,
 						})
 					}
 				}
@@ -637,15 +653,19 @@ func main() {
 	// Static Assets handler: Serves local files if present; otherwise streams/redirects from GitHub raw CDN!
 	mux.HandleFunc("/Assets/", func(w http.ResponseWriter, r *http.Request) {
 		relPath := strings.TrimPrefix(r.URL.Path, "/Assets/")
-		fullPath := filepath.Join("..", "Assets", relPath)
-		if _, err := os.Stat(fullPath); os.IsNotExist(err) {
-			fullPath = filepath.Join("Assets", relPath)
+		candidatePaths := []string{
+			filepath.Join("/app", "Assets", relPath),
+			filepath.Join("..", "Assets", relPath),
+			filepath.Join("Assets", relPath),
+			filepath.Join("/Assets", relPath),
 		}
 
-		if _, err := os.Stat(fullPath); err == nil {
-			w.Header().Set("Cache-Control", "public, max-age=86400")
-			http.ServeFile(w, r, fullPath)
-			return
+		for _, fullPath := range candidatePaths {
+			if info, err := os.Stat(fullPath); err == nil && !info.IsDir() {
+				w.Header().Set("Cache-Control", "public, max-age=86400")
+				http.ServeFile(w, r, fullPath)
+				return
+			}
 		}
 
 		// Cloud / GitHub Stream Proxy: Fetch from GitHub Raw URL with 0 local storage required

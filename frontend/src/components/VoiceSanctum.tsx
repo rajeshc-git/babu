@@ -43,22 +43,31 @@ export function VoiceSanctum({ isOpen, onClose }: VoiceSanctumProps) {
   );
 
   const handlePlayVoice = (v: VoiceNote) => {
-    playCoCClick(1.1);
+    if (!audioRef.current) return;
+    const encodedUrl = encodeURI(v.url);
+
     if (currentTrack?.fileName === v.fileName) {
       if (isPlaying) {
-        audioRef.current?.pause();
+        audioRef.current.pause();
         setIsPlaying(false);
       } else {
-        audioRef.current?.play();
-        setIsPlaying(true);
+        audioRef.current
+          .play()
+          .then(() => setIsPlaying(true))
+          .catch((err) => console.warn("Audio play error:", err));
       }
     } else {
       setCurrentTrack(v);
-      if (audioRef.current) {
-        audioRef.current.src = v.url;
-        audioRef.current.play().then(() => setIsPlaying(true)).catch(() => {});
+      audioRef.current.src = encodedUrl;
+      audioRef.current.load();
+      const playPromise = audioRef.current.play();
+      if (playPromise !== undefined) {
+        playPromise
+          .then(() => setIsPlaying(true))
+          .catch((err) => console.warn("Audio play error:", err));
       }
     }
+    playCoCClick(1.1);
   };
 
   if (!isOpen) return null;
@@ -80,13 +89,18 @@ export function VoiceSanctum({ isOpen, onClose }: VoiceSanctumProps) {
       onClick={(e) => {
         if (e.target === e.currentTarget) {
           playCoCClick(0.9);
+          if (audioRef.current) audioRef.current.pause();
           onClose();
         }
       }}
     >
       <audio
         ref={audioRef}
+        playsInline
+        preload="auto"
         onEnded={() => setIsPlaying(false)}
+        onPause={() => setIsPlaying(false)}
+        onPlay={() => setIsPlaying(true)}
       />
 
       <div

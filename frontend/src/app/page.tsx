@@ -223,7 +223,7 @@ export default function Home() {
     <main style={{
       minHeight: "100dvh",
       position: "relative",
-      paddingBottom: isMobile ? "calc(env(safe-area-inset-bottom, 0px) + 70px)" : "110px",
+      paddingBottom: isMobile ? "calc(env(safe-area-inset-bottom, 0px) + 70px)" : "64px",
     }}>
       {/* Clash of Clans Battlefield Grass Grid & Vignette */}
       <div className="coc-battlefield-bg" />
@@ -363,30 +363,19 @@ export default function Home() {
         </>
       )}
 
-      {/* Hero Welcome Title */}
+      {/* Hero Action Buttons Section */}
       <section
         style={{
           position: "relative",
           zIndex: 10,
-          paddingTop: isMobile ? "68px" : "88px",
+          paddingTop: isMobile ? "60px" : "84px",
           paddingLeft: isMobile ? "10px" : "16px",
           paddingRight: isMobile ? "10px" : "16px",
           textAlign: "center",
           maxWidth: "960px",
-          margin: isMobile ? "0 auto 8px auto" : "0 auto 12px auto",
+          margin: "0 auto 6px auto",
         }}
       >
-        <h1
-          className="coc-gold-text"
-          style={{
-            fontSize: isMobile ? "clamp(18px, 5.5vw, 24px)" : "clamp(22px, 4vw, 36px)",
-            lineHeight: 1.15,
-            marginBottom: isMobile ? "8px" : "12px",
-          }}
-        >
-          THE LIVING ARCHIVE &amp; 3D LIBRARY
-        </h1>
-
         {/* Clash of Clans Distinct Media Button Row - Desktop only */}
         {!isMobile && (
           <div
@@ -447,7 +436,7 @@ export default function Home() {
       </section>
 
       {/* Main 3D Bookshelf & Drawer Stage */}
-      <section id="shelf-stage" style={{ position: "relative", zIndex: 10, marginBottom: isMobile ? "16px" : "30px" }}>
+      <section id="shelf-stage" style={{ position: "relative", zIndex: 10, marginBottom: isMobile ? "8px" : "12px" }}>
         <ThreeBookshelf
           memories={memories}
           shelves={shelves}

@@ -8,6 +8,8 @@ services:
     restart: unless-stopped
     ports:
       - "8530:8530"
+    volumes:
+      - ./Assets:/app/Assets:ro
     environment:
       - PORT=8530
       - GITHUB_REPO=rajeshc-git/babu
@@ -15,7 +17,7 @@ services:
     deploy:
       resources:
         limits:
-          memory: 32M
+          memory: 48M
           cpus: "0.25"
         reservations:
           memory: 8M
@@ -36,6 +38,8 @@ services:
     restart: unless-stopped
     ports:
       - "1430:1430"
+    volumes:
+      - ./Assets:/app/Assets:ro
     environment:
       - PORT=1430
       - BACKEND_URL=http://backend:8530

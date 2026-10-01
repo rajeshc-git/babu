@@ -50,15 +50,19 @@ export function BookReaderModal({ memory, onClose, onTribute }: BookReaderModalP
 
   const handleToggleVoice = () => {
     if (!audioRef.current) return;
-    playCoCClick(1.2);
     if (isPlayingAudio) {
       audioRef.current.pause();
       setIsPlayingAudio(false);
     } else {
-      audioRef.current.play().then(() => {
-        setIsPlayingAudio(true);
-      }).catch(() => {});
+      audioRef.current.load();
+      const playPromise = audioRef.current.play();
+      if (playPromise !== undefined) {
+        playPromise
+          .then(() => setIsPlayingAudio(true))
+          .catch((err) => console.warn("Audio play error:", err));
+      }
     }
+    playCoCClick(1.2);
   };
 
   const handleAudioTimeUpdate = () => {
@@ -310,7 +314,9 @@ export function BookReaderModal({ memory, onClose, onTribute }: BookReaderModalP
               >
                 <audio
                   ref={audioRef}
-                  src={memory.audioPath}
+                  src={encodeURI(memory.audioPath)}
+                  playsInline
+                  preload="auto"
                   onTimeUpdate={handleAudioTimeUpdate}
                   onEnded={handleAudioEnded}
                 />

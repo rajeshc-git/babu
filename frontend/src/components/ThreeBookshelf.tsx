@@ -844,7 +844,7 @@ export function ThreeBookshelf({
                 playCoCClick(1.1);
                 onOpenNewMemory();
               }}
-              title="Inscribe a new book into the shelf"
+              title="Add a new book into the shelf"
               className="coc-btn-pill coc-btn-pill-orange"
               style={{
                 height: isMobile ? "36px" : "42px",
@@ -855,13 +855,13 @@ export function ThreeBookshelf({
               }}
             >
               <div className="coc-btn-gloss" />
-              {/* Quill / Inscribe Plus Icon */}
+              {/* Quill / Add Plus Icon */}
               <svg width={isMobile ? "18" : "20"} height={isMobile ? "18" : "20"} viewBox="0 0 24 24" fill="none" style={{ flexShrink: 0, filter: "drop-shadow(0 1px 2px rgba(0,0,0,0.7))" }}>
                 <circle cx="12" cy="12" r="9" fill="#d9540b" stroke="#ffd700" strokeWidth="2" />
                 <path d="M12 7v10M7 12h10" stroke="#ffffff" strokeWidth="2.5" strokeLinecap="round" />
               </svg>
               <span className="coc-text-shadow" style={{ color: "#ffffff", letterSpacing: "0.5px", fontWeight: 700 }}>
-                Inscribe
+                ADD
               </span>
             </button>
           )}
@@ -899,10 +899,11 @@ export function ThreeBookshelf({
       {/* 3D Interactive Canvas or 2.5D Drawer */}
       {viewMode === "3d" ? (
         <div
+          className="bookshelf-3d-container"
           style={{
             position: "relative",
             width: "100%",
-            height: isMobile ? "380px" : "540px",
+            height: isMobile ? "clamp(320px, 46vh, 380px)" : "clamp(340px, calc(100vh - 240px), 520px)",
             borderRadius: isMobile ? "16px" : "24px",
             overflow: "hidden",
             border: isMobile ? "3px solid #3c2415" : "5px solid #3c2415",
