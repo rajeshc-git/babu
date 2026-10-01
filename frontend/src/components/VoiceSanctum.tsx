@@ -59,7 +59,6 @@ export function VoiceSanctum({ isOpen, onClose }: VoiceSanctumProps) {
     } else {
       setCurrentTrack(v);
       audioRef.current.src = encodedUrl;
-      audioRef.current.load();
       const playPromise = audioRef.current.play();
       if (playPromise !== undefined) {
         playPromise

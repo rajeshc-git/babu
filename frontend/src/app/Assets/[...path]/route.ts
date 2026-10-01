@@ -113,7 +113,7 @@ export async function GET(
   }
 
   // 2. Fallback: Proxy to Go backend service if running in Docker
-  const backendBase = process.env.BACKEND_URL || "http://backend:8530";
+  const backendBase = process.env.BACKEND_URL || "http://127.0.0.1:8530";
   try {
     const encodedPath = decodedSegments.map((s) => encodeURIComponent(s)).join("/");
     const backendUrl = `${backendBase}/Assets/${encodedPath}`;
@@ -126,6 +126,7 @@ export async function GET(
       const body = await backendRes.arrayBuffer();
       const headers = new Headers();
       backendRes.headers.forEach((val, key) => headers.set(key, val));
+      headers.set("Access-Control-Allow-Origin", "*");
       return new NextResponse(body, {
         status: backendRes.status,
         headers,
@@ -133,13 +134,52 @@ export async function GET(
     }
   } catch {}
 
-  // 3. Last fallback: Redirect to GitHub CDN
-  const encodedPath = decodedSegments.map((segment) => encodeURIComponent(segment)).join("/");
+  // 3. Last fallback: Stream directly from GitHub Public CDN / Git LFS Media Store
   const githubRepo = process.env.GITHUB_REPO || "rajeshc-git/babu";
   const githubBranch = process.env.GITHUB_BRANCH || "main";
-  const targetUrl = `https://raw.githubusercontent.com/${githubRepo}/${githubBranch}/Assets/${encodedPath}`;
+  const encodedPath = decodedSegments.map((segment) => encodeURIComponent(segment)).join("/");
+  
+  // Determine if file is tracked by Git LFS (.mp3, .mp4, .mov, .heic)
+  const ext = path.extname(decodedSegments[decodedSegments.length - 1] || "").toLowerCase();
+  const isLfs = [".mp3", ".mp4", ".mov", ".heic"].includes(ext);
 
-  return NextResponse.redirect(targetUrl, {
+  const cdnUrl = isLfs
+    ? `https://media.githubusercontent.com/media/${githubRepo}/${githubBranch}/Assets/${encodedPath}`
+    : `https://raw.githubusercontent.com/${githubRepo}/${githubBranch}/Assets/${encodedPath}`;
+
+  try {
+    const ghRes = await fetch(cdnUrl, {
+      headers: {
+        ...(request.headers.get("range") ? { range: request.headers.get("range")! } : {}),
+        "User-Agent": "Babu-Memorial-Media-Proxy",
+      },
+    });
+
+    if (ghRes.ok || ghRes.status === 206) {
+      const contentType = MIME_TYPES[ext] || ghRes.headers.get("content-type") || "application/octet-stream";
+      const headers = new Headers();
+      headers.set("Content-Type", contentType);
+      headers.set("Cache-Control", "public, max-age=86400");
+      headers.set("Access-Control-Allow-Origin", "*");
+      headers.set("Accept-Ranges", "bytes");
+
+      const contentLength = ghRes.headers.get("content-length");
+      if (contentLength) headers.set("Content-Length", contentLength);
+
+      const contentRange = ghRes.headers.get("content-range");
+      if (contentRange) headers.set("Content-Range", contentRange);
+
+      return new NextResponse(ghRes.body, {
+        status: ghRes.status,
+        headers,
+      });
+    }
+  } catch (err) {
+    console.error("GitHub CDN fetch error:", err);
+  }
+
+  // Final fallback: 307 redirect
+  return NextResponse.redirect(cdnUrl, {
     status: 307,
     headers: {
       "Cache-Control": "public, max-age=86400",

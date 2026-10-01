@@ -668,8 +668,15 @@ func main() {
 			}
 		}
 
-		// Cloud / GitHub Stream Proxy: Fetch from GitHub Raw URL with 0 local storage required
-		rawURL := fmt.Sprintf("https://raw.githubusercontent.com/%s/%s/Assets/%s", store.GithubRepo, store.GithubBranch, relPath)
+		// Cloud / GitHub Stream Proxy: Route Git LFS files (.mp3, .mp4, .mov, .heic) to media CDN
+		ext := strings.ToLower(filepath.Ext(relPath))
+		var rawURL string
+		if ext == ".mp3" || ext == ".mp4" || ext == ".mov" || ext == ".heic" {
+			rawURL = fmt.Sprintf("https://media.githubusercontent.com/media/%s/%s/Assets/%s", store.GithubRepo, store.GithubBranch, relPath)
+		} else {
+			rawURL = fmt.Sprintf("https://raw.githubusercontent.com/%s/%s/Assets/%s", store.GithubRepo, store.GithubBranch, relPath)
+		}
+		w.Header().Set("Access-Control-Allow-Origin", "*")
 		http.Redirect(w, r, rawURL, http.StatusTemporaryRedirect)
 	})
 
