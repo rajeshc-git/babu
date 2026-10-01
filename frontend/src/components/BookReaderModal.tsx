@@ -54,7 +54,6 @@ export function BookReaderModal({ memory, onClose, onTribute }: BookReaderModalP
       audioRef.current.pause();
       setIsPlayingAudio(false);
     } else {
-      audioRef.current.load();
       const playPromise = audioRef.current.play();
       if (playPromise !== undefined) {
         playPromise
