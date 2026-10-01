@@ -51,10 +51,6 @@ COPY --from=frontend-builder /frontend/public /app/public
 COPY --from=frontend-builder /frontend/.next/standalone /app/
 COPY --from=frontend-builder /frontend/.next/static /app/.next/static
 
-# 3. Copy Assets directly into the container
-COPY Assets /app/Assets
-COPY Assets /app/public/Assets
-
 # 3. Create lightweight entrypoint launcher
 RUN printf '#!/bin/sh\n\
 echo "⚡ Starting Native Go Microservice on port 8530..."\n\
