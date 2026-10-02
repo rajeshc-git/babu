@@ -368,12 +368,12 @@ export default function Home() {
         style={{
           position: "relative",
           zIndex: 10,
-          paddingTop: isMobile ? "60px" : "84px",
-          paddingLeft: isMobile ? "10px" : "16px",
-          paddingRight: isMobile ? "10px" : "16px",
+          paddingTop: isMobile ? "calc(env(safe-area-inset-top, 0px) + 70px)" : "84px",
+          paddingLeft: isMobile ? "8px" : "16px",
+          paddingRight: isMobile ? "8px" : "16px",
           textAlign: "center",
           maxWidth: "960px",
-          margin: "0 auto 6px auto",
+          margin: isMobile ? "0 auto 10px auto" : "0 auto 14px auto",
         }}
       >
         {/* Clash of Clans Distinct Media Button Row - Desktop only */}
@@ -411,7 +411,7 @@ export default function Home() {
           </div>
         )}
 
-        {/* Mobile Quick Action Strip - Compact horizontal buttons */}
+        {/* Mobile Quick Action Strip - Compact horizontal buttons with comfortable breathing room */}
         {isMobile && (
           <div
             style={{
@@ -419,11 +419,13 @@ export default function Home() {
               alignItems: "center",
               justifyContent: "center",
               gap: "6px",
-              background: "rgba(15, 30, 10, 0.8)",
-              border: "2px solid #234f06",
-              borderRadius: "14px",
+              background: "rgba(15, 30, 10, 0.85)",
+              border: "2.5px solid #234f06",
+              borderRadius: "16px",
               padding: "6px 8px",
-              boxShadow: "0 4px 12px rgba(0,0,0,0.5)",
+              boxShadow: "0 4px 16px rgba(0,0,0,0.55), inset 0 1px 2px rgba(255,255,255,0.15)",
+              maxWidth: "360px",
+              margin: "0 auto",
             }}
           >
             <CoCSpeechButton onClick={() => setIsChatOpen(true)} title="Chat" />
