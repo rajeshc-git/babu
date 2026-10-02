@@ -112,29 +112,7 @@ export async function GET(
     } catch {}
   }
 
-  // 2. Fallback: Proxy to Go backend service if running in Docker
-  const backendBase = process.env.BACKEND_URL || "http://127.0.0.1:8530";
-  try {
-    const encodedPath = decodedSegments.map((s) => encodeURIComponent(s)).join("/");
-    const backendUrl = `${backendBase}/Assets/${encodedPath}`;
-    const backendRes = await fetch(backendUrl, {
-      headers: {
-        ...(request.headers.get("range") ? { range: request.headers.get("range")! } : {}),
-      },
-    });
-    if (backendRes.ok || backendRes.status === 206) {
-      const body = await backendRes.arrayBuffer();
-      const headers = new Headers();
-      backendRes.headers.forEach((val, key) => headers.set(key, val));
-      headers.set("Access-Control-Allow-Origin", "*");
-      return new NextResponse(body, {
-        status: backendRes.status,
-        headers,
-      });
-    }
-  } catch {}
-
-  // 3. Last fallback: Stream directly from GitHub Public CDN / Git LFS Media Store
+  // 2. Direct Cloud CDN Streaming Proxy (Zero VPS Disk footprint, iOS-compatible)
   const githubRepo = process.env.GITHUB_REPO || "rajeshc-git/babu";
   const githubBranch = process.env.GITHUB_BRANCH || "main";
   const encodedPath = decodedSegments.map((segment) => encodeURIComponent(segment)).join("/");
@@ -148,17 +126,28 @@ export async function GET(
     : `https://raw.githubusercontent.com/${githubRepo}/${githubBranch}/Assets/${encodedPath}`;
 
   try {
+    const fetchHeaders: Record<string, string> = {
+      "User-Agent": "Babu-Memorial-Media-Proxy",
+    };
+    const rangeHeader = request.headers.get("range");
+    if (rangeHeader) {
+      fetchHeaders["range"] = rangeHeader;
+    }
+
     const ghRes = await fetch(cdnUrl, {
-      headers: {
-        ...(request.headers.get("range") ? { range: request.headers.get("range")! } : {}),
-        "User-Agent": "Babu-Memorial-Media-Proxy",
-      },
+      headers: fetchHeaders,
     });
 
     if (ghRes.ok || ghRes.status === 206) {
-      const contentType = MIME_TYPES[ext] || ghRes.headers.get("content-type") || "application/octet-stream";
+      // Force iOS-compatible audio MIME type for all voice recordings
+      let contentType = MIME_TYPES[ext] || "application/octet-stream";
+      if (ext === ".mpeg" || decodedSegments.some(s => s.toLowerCase().includes("voice"))) {
+        contentType = "audio/mpeg";
+      }
+
       const headers = new Headers();
       headers.set("Content-Type", contentType);
+      headers.set("Content-Disposition", "inline");
       headers.set("Cache-Control", "public, max-age=86400");
       headers.set("Access-Control-Allow-Origin", "*");
       headers.set("Accept-Ranges", "bytes");

@@ -25,38 +25,33 @@ export function CoCHeader({ elixir, flames, stars, serverStats, onOpenInfo, onTo
   const [isMobile, setIsMobile] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
-  useEffect(() => {
-    // Background audio instance
-    audioRef.current = new Audio("/Assets/ambient.mp3");
-    audioRef.current.loop = true;
-    audioRef.current.volume = 0.35;
-
-    // Mobile detection
-    const checkMobile = () => setIsMobile(window.innerWidth < 640);
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-
-    return () => {
-      if (audioRef.current) {
-        audioRef.current.pause();
-        audioRef.current = null;
-      }
-      window.removeEventListener("resize", checkMobile);
-    };
-  }, []);
-
   const handleToggleBgm = () => {
     playCoCClick(1.2);
-    if (!audioRef.current) return;
+    if (!audioRef.current) {
+      const audio = new Audio("/Assets/ambient.mp3");
+      audio.loop = true;
+      audio.volume = 0.35;
+      audio.onplay = () => setBgmPlaying(true);
+      audio.onpause = () => setBgmPlaying(false);
+      audioRef.current = audio;
+    }
+
     if (bgmPlaying) {
       audioRef.current.pause();
       setBgmPlaying(false);
     } else {
-      audioRef.current.play().then(() => {
-        setBgmPlaying(true);
-      }).catch(() => {
-        // Autoplay policy fallback
-      });
+      if (!audioRef.current.src || audioRef.current.error) {
+        audioRef.current.src = "/Assets/ambient.mp3";
+      }
+      const playPromise = audioRef.current.play();
+      if (playPromise !== undefined) {
+        playPromise
+          .then(() => setBgmPlaying(true))
+          .catch((err) => {
+            console.warn("Ambient BGM play blocked or failed:", err);
+            setBgmPlaying(false);
+          });
+      }
     }
   };
 

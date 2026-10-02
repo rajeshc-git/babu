@@ -579,7 +579,8 @@ export function VideoSanctum({ isOpen, onClose }: VideoSanctumProps) {
               )}
 
               <button
-                onClick={() => {
+                onClick={(e) => {
+                  e.stopPropagation();
                   playCoCClick(0.9);
                   if (videoRef.current) videoRef.current.pause();
                   onClose();
@@ -822,8 +823,7 @@ export function VideoSanctum({ isOpen, onClose }: VideoSanctumProps) {
             {/* Big Center Play / Pause Indicator */}
             {!isPlaying && !isBuffering && (
               <div
-                onClick={togglePlay}
-                onTouchEnd={(e) => {
+                onClick={(e) => {
                   e.stopPropagation();
                   togglePlay();
                 }}
